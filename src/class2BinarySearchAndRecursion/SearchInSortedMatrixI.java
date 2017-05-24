@@ -1,4 +1,4 @@
-package SearchInSortedMatrixI;
+package class2BinarySearchAndRecursion;
 
 /**
  * 
@@ -24,16 +24,21 @@ package SearchInSortedMatrixI;
 
 public class SearchInSortedMatrixI {
 	public int[] search(int[][] matrix, int target) {
-		
 		// Write your solution here.
-		/**
-		 * The better solution which only uses binary search once suppose matrix
-		 * is: L[0][0] 1 2 3 4 5 6 7 8 target == 7 9 10 11 12 R[n - 1][m - 1]
-		 *
-		 * start = 0; end = m * n - 1; mid = start + (end - start) / 2 = 0 + 11
-		 * / 2 = 5 --> map 5 back to the matrix coordinates 5: row = mid /
-		 * col_num = 5 / 4 = 1 col = mid % col_num = 5 % 4 = 1 ==> {1,1}
-		 */
+		 /**
+		    * The better solution which only uses binary search once
+		    * suppose matrix is:
+		    *     L[0][0]
+		    *      1 2 3 4
+		    *      5 6 7 8        target == 7
+		    *      9 10 11 12
+		    *               R[n - 1][m - 1]
+		    *
+		    *      start = 0;  end = m * n - 1;   mid = start + (end - start) / 2 = 0 + 11 / 2 = 5
+		    *      --> map 5 back to the matrix coordinates
+		    *       5: row = mid / col_num = 5 / 4 = 1
+		    *          col = mid % col_num = 5 % 4 = 1    ==>  {1,1}
+		    */
 		if (matrix == null || matrix.length == 0) {
 			return new int[] { -1, -1 };
 		}
