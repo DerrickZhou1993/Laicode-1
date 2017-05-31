@@ -2,6 +2,7 @@ package class3QueueStackAndLinkedList;
 
 /**
  * 
+<<<<<<< HEAD
  * @author @Yifeng
  * Insert a value in a sorted linked list.
 
@@ -50,4 +51,23 @@ public class InsertInSortedLinkedList {
 		
 		return head;
 	}
+=======
+ * @author guoyifeng
+ *	Insert a value in a sorted linked list.
+
+	Examples
+	
+	L = null, insert 1, return 1 -> null
+	L = 1 -> 3 -> 5 -> null, insert 2, return 1 -> 2 -> 3 -> 5 -> null
+	L = 1 -> 3 -> 5 -> null, insert 3, return 1 -> 3 -> 3 -> 5 -> null
+	L = 2 -> 3 -> null, insert 1, return 1 -> 2 -> 3 -> null
+ */
+
+
+public class InsertInSortedLinkedList {
+	public ListNode insert(ListNode head, int value) {
+	    // write your solution here
+	    return head;
+	  }
+>>>>>>> 34f13aaad60ffe96d8f398bfe35d3efdd4582274
 }
