@@ -63,7 +63,7 @@ public class ReOrderLinkedList {
 		ListNode dummy = new ListNode(0);
 		ListNode cur = dummy;
 		while (one != null && two != null) { // must not write like one = one.next; two = two.next at last
-											 // together, because one's rest nodes will be lost when cur changes!!!
+						     // together, because one's rest nodes will be lost when cur changes!!!
 			cur.next = one;
 			one = one.next;
 			cur = cur.next;
