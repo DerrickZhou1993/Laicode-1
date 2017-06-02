@@ -7,10 +7,10 @@ package class3QueueStackAndLinkedList;
  * are listed before the nodes larger than or equal to target value T. 
  * The original relative order of the nodes in each of the two partitions should be preserved.
 
-	Examples
-	
-				  L = 2 -> 4 -> 3 -> 5 -> 1 -> null, T = 3, 
-	is partitioned to 2 -> 1 -> 4 -> 3 -> 5 -> null
+    Examples
+
+                  L = 2 -> 4 -> 3 -> 5 -> 1 -> null, T = 3,
+    is partitioned to 2 -> 1 -> 4 -> 3 -> 5 -> null
  */
 
 
@@ -40,35 +40,35 @@ package class3QueueStackAndLinkedList;
  *  My first accepted version
  */
 public class PartitionLinkedList {
-	public ListNode partition(ListNode head, int target) {
-		if (head == null) {
-			return head;
-		}
-		// step1:
-		ListNode smallHead = new ListNode(0);
-		ListNode smallTail = smallHead;
-		ListNode largeHead = new ListNode(0);
-		ListNode largeTail = largeHead;
-		
-		// step2:
-		while (head != null) { //must head != null or the last element may be ruled out if use head.next != null 
-			if (head.value < target) {
-				smallTail.next = head;
-				smallTail = smallTail.next;
-				head = head.next;
-			} else {
-				largeTail.next = head;
-				largeTail = largeTail.next;
-				head = head.next;
-			}
-		}
-		smallHead = smallHead.next; // put fakeHead to current half's real head
-		largeHead = largeHead.next;
+    public ListNode partition(ListNode head, int target) {
+        if (head == null) {
+            return head;
+        }
+        // step1:
+        ListNode smallHead = new ListNode(0);
+        ListNode smallTail = smallHead;
+        ListNode largeHead = new ListNode(0);
+        ListNode largeTail = largeHead;
 
-		smallTail.next = largeHead; // step 3: concatenation
+        // step2:
+        while (head != null) { //must head != null or the last element may be ruled out if use head.next != null
+            if (head.value < target) {
+                smallTail.next = head;
+                smallTail = smallTail.next;
+                head = head.next;
+            } else {
+                largeTail.next = head;
+                largeTail = largeTail.next;
+                head = head.next;
+            }
+        }
+        smallHead = smallHead.next; // put fakeHead to current half's real head
+        largeHead = largeHead.next;
 
-		largeTail.next = null;     // step 4 set null at tail
+        smallTail.next = largeHead; // step 3: concatenation
 
-		return (smallHead == null ? largeHead : smallHead); // if input is like {2} target is 1, so smallHead is null always
-	}
+        largeTail.next = null;     // step 4 set null at tail
+
+        return (smallHead == null ? largeHead : smallHead); // if input is like {2} target is 1, so smallHead is null always
+    }
 }

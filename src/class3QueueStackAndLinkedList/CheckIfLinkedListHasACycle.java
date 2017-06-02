@@ -18,31 +18,31 @@ import java.util.ArrayList;
  *  remember check the corner case;
  */
 public class CheckIfLinkedListHasACycle {
-	public boolean hasCycle(ListNode head) {
-		if(head == null) {
-			return false;
-		}
-		ListNode fast = head;
-		ListNode slow = head;
-		
-		while(fast.next != null && fast.next.next != null) {
-			fast = fast.next.next;
-			slow = slow.next;
-			if(slow == fast) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	
-	
-	
-	
-	
-	/*
-	 *  my fist bad implemetation which used extra collection api
-	 */
+    public boolean hasCycle(ListNode head) {
+        if(head == null) {
+            return false;
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+
+        while(fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if(slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+    /*
+     *  my fist bad implemetation which used extra collection api
+     */
 //	public boolean hasCycle(ListNode head) {
 //		// write your solution here
 //		if (head == null || head.next == null) {

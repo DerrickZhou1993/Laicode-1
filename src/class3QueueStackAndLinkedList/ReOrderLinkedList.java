@@ -4,8 +4,8 @@ package class3QueueStackAndLinkedList;
  * 
  * @author guoyifeng
  * Reorder the given singly-linked list 
- * 			N1 -> N2 -> N3 -> N4 -> ... -> Nn -> null 
- * 	  to be N1- > Nn -> N2 -> Nn-1 -> N3 -> Nn-2 -> ... -> null  
+ * 			N1 -> N2 -> N3 -> N4 -> … -> Nn -> null 
+ * 	  to be N1- > Nn -> N2 -> Nn-1 -> N3 -> Nn-2 -> … -> null
 
 	Examples
 	
@@ -62,8 +62,7 @@ public class ReOrderLinkedList {
 	private ListNode merge(ListNode one, ListNode two) {
 		ListNode dummy = new ListNode(0);
 		ListNode cur = dummy;
-		while (one != null && two != null) { // must not write like one = one.next; two = two.next at last
-						     // together, because one's rest nodes will be lost when cur changes!!!
+		while (one != null && two != null) {
 			cur.next = one;
 			one = one.next;
 			cur = cur.next;
