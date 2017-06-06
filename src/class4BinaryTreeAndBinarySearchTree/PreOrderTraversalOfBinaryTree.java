@@ -1,6 +1,8 @@
 package class4BinaryTreeAndBinarySearchTree;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -45,16 +47,44 @@ import java.util.List;
 	    4
  */
 public class PreOrderTraversalOfBinaryTree {
+	/*
+	 * iterative method
+	 */
 	public List<Integer> preOrder(TreeNode root) {
 		List<Integer> result = new ArrayList<>();
+		Deque<TreeNode> stack = new LinkedList<>();
 		if(root == null) {
 			return result;
 		}
-		List<Integer> left = preOrder(root.left);
-		List<Integer> right = preOrder(root.right);
-		result.add(root.key);
-		result.addAll(left);
-		result.addAll(right);
+		stack.push(root);
+		while(!stack.isEmpty()) {
+			TreeNode cur = stack.pollFirst();
+			if(cur.right != null) {
+				stack.push(cur.right); //because stack is FILO, so we need to push right subtree befor pushing left subtree
+			}
+			if(cur.left != null) {
+				stack.push(cur.left);
+			}
+			
+			result.add(cur.key);
+			
+		}
 		return result;
 	}
+	
+	/*
+	 * recursive method
+	 */
+//	public List<Integer> preOrder(TreeNode root) {
+//		List<Integer> result = new ArrayList<>();
+//		if(root == null) {
+//			return result;
+//		}
+//		List<Integer> left = preOrder(root.left);
+//		List<Integer> right = preOrder(root.right);
+//		result.add(root.key);
+//		result.addAll(left);
+//		result.addAll(right);
+//		return result;
+//	}
 }
