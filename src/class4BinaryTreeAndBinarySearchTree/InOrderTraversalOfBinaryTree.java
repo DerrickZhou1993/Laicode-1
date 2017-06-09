@@ -1,6 +1,7 @@
 package class4BinaryTreeAndBinarySearchTree;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -64,7 +65,26 @@ public class InOrderTraversalOfBinaryTree {
 	/*
 	 * iterative method
 	 */
-
+	public List<Integer> inOrder(TreeNode root) {
+		List<Integer> result = new ArrayList<>();
+		if(root == null) {
+			return result;
+		}
+		Deque<TreeNode> stack = new LinkedList<>();
+		TreeNode cur = root;//physical significance: the leftmost node of current subtree
+		while(cur != null || !stack.isEmpty()) {
+			//try to find the leftmost node and add it to the result first
+			if(cur != null) {
+				stack.offerFirst(cur);//each parent node is stored in the stack for future traversal
+				cur = cur.left;
+			} else {//no child node so cur is null, found the leftmost node of current subtree
+				cur = stack.pollFirst();//get the leftmost node from stack
+				result.add(cur.key);
+				cur = cur.right;//for the last layer if cur has no right childnode, the parent node will be polled from the stack
+			}
+		}
+		return result;
+	}
 	/*
 	 * recursive method
 	 */
