@@ -32,6 +32,7 @@ public class KSmallestInUnsortedArray {
 			return new int[0];
 		}
 		//initialize a max heap with k capacity and override the compare() of Comparator to make it as a max heap;
+		//PriorityQueue<Integer> maxheap = new PriorityQueue<>(Collections.reverseOrder());
 		PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k,new Comparator<Integer>() {
 			@Override
 			public int compare(Integer o1,Integer o2) {
