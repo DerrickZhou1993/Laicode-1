@@ -1,4 +1,4 @@
-package class18DP3;
+package class17DP3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,14 @@ import java.util.List;
 	the largest submatrix sum is (-1) + 4 + 1 + 1 + (-1) + 1 + 1 + 1 = 7.
  */
 /*
- * Time =  O(n^3)
+ * basic idea: step 1: pre-processing: do the 1-D prefix_sum on each column of the matrix O(n^2)
+ * 		               so each entry's prefix_sum from top to bottom has been recorded.
+ *             step 2: 
+ *                     step 2.1: choose two rows from matrix as submatrix two limits (Cn_2 = O(n^2))
+ *                           step 2.2: for each column between two rows, calculate the distance between upper row and bottom row(using prefix_sum method) O(n)
+ *                           step 2.3: store the distance of each column in a 1-D array and put the array as input to calculate the max sub-array O(n)          
+ *                     	          
+ * Time =  O(n^2*(n+n)) = O(n^3)
  */
 public class LargestSubMatrixSum {
 	public int largest(int[][] matrix) {
@@ -79,7 +86,7 @@ public class LargestSubMatrixSum {
 	}
  
 	/*
-	 * record predix_sum on each index of current column of matrix
+	 * record prefix_sum on each index of current column of matrix
 	 */
 	private List<Integer> prefixSum(int[][] matrix, int columnIndex) {
 		int m = matrix.length;
