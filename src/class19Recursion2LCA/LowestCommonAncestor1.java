@@ -63,6 +63,6 @@ public class LowestCommonAncestor1 {
 			return left == null ? right : left;     //child will never be returned, return parent directly
 		}
 		//case 3 
-		return root; // could not find one and two both in root's subtree
+		return root; // current root is the LCA of a and b
 	}
 }
