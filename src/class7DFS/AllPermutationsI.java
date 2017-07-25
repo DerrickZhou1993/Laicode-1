@@ -6,13 +6,15 @@ import java.util.List;
 /**
  * 
  * @author guoyifeng
- * Given a string with no duplicate characters, return a list with all permutations of the characters.
-
+	Given a string with no duplicate characters, return a list with all permutations of the characters.
+	
 	Examples
 	
-	Set = â€œabcâ€, all permutations are [â€œabcâ€, â€œacbâ€, â€œbacâ€, â€œbcaâ€, â€œcabâ€, â€œcbaâ€]
+	Set = ¡°abc¡±, all permutations are [¡°abc¡±, ¡°acb¡±, ¡°bac¡±, ¡°bca¡±, ¡°cab¡±, ¡°cba¡±]
 	Set = "", all permutations are [""]
 	Set = null, all permutations are []
+	
+	if each element of input shall appear in the return result, prior to use swap and swap
 
  */
 public class AllPermutationsI {
