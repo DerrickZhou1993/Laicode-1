@@ -6,9 +6,8 @@ import java.util.List;
 /**
  * 
  * @author guoyifeng
- *	Given a set of characters represented by a String, 
- * 	return a list containing all subsets of the characters.
-
+	Given a set of characters represented by a String, return a list containing all subsets of the characters.
+	
 	Assumptions
 	
 	There are no duplicate characters in the original set.
@@ -18,6 +17,11 @@ import java.util.List;
 	Set = "", all the subsets are [""]
 	Set = null, all the subsets are []
 
+ */
+
+/*
+ * Time O(2 ^ n) n = elements number = layers
+ * Space O(n) n elements
  */
 public class AllSubsetsI {
 	public List<String> subSets(String set) {
@@ -35,8 +39,8 @@ public class AllSubsetsI {
 			result.add(sb.toString());
 			return;
 		}
-		helper(set,level + 1, sb.append(set.charAt(level)),result);
-		sb.deleteCharAt(sb.length() - 1);
-		helper(set,level + 1,sb,result);
+		helper(set,level + 1, sb.append(set.charAt(level)),result);//choose a character
+		sb.deleteCharAt(sb.length() - 1); //back to last condition
+		helper(set,level + 1,sb,result); // not choose  
 	}
 }
