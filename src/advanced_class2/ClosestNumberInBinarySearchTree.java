@@ -53,6 +53,43 @@ package advanced_class2;
  * case 2: if(cur.val > target) update solution_node & min_diff if feasible, cur = cur.left;
  * case 3: if(cur.val == target) return cur
  */
-public class ClosestNumberInBinarySearchTree {
 
+ 
+
+public class ClosestNumberInBinarySearchTree {
+	class TreeNode {
+		public int key;
+		public TreeNode left;
+		public TreeNode right;
+
+		public TreeNode(int key) {
+			this.key = key;
+		}
+	}
+
+	public int closest(TreeNode root, int target) {
+		if (root == null) {
+			return Integer.MIN_VALUE;
+		}
+		int result = root.key;
+		TreeNode cur = root;
+		while (cur != null) {
+			if (cur.key == target) {
+				result = cur.key;
+				return result;
+			} else {
+				if (Math.abs(cur.key - target) < Math.abs(result - target)) {
+					result = cur.key;
+				}
+				if (cur.key > target) {
+					cur = cur.left;
+				} else {
+					cur = cur.right;
+				}
+			}
+		}
+		return result;
+	}
 }
+
+

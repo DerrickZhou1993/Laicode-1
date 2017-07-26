@@ -1,5 +1,8 @@
 package advanced_class2;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /*
  * Assumptions: 1.duplication
  * 				2.data type
@@ -62,5 +65,59 @@ package advanced_class2;
  *  
  */
 public class MergeKSortedArray {
-
+	class Element {
+		int indexOfRow;
+		int indexOfColumn;
+		int value;
+		public Element(int indexOfRow, int indexOfColumn, int value) {
+			this.indexOfRow = indexOfRow;
+			this.indexOfColumn = indexOfColumn;
+			this.value = value;
+		}
+	}
+	
+	//to enable Element to be compared
+	//for we need ascending order in result, so we need a minHeap
+	class myComparator implements Comparator<Element> {
+		@Override
+		public int compare(Element e1, Element e2) {
+			if (e1.value == e2.value) {
+				return 0;
+			}
+			return e1.value < e2.value ? -1 : 1;
+		}
+	}
+	
+	public int[] merge(int[][] arrayOfArrays) {
+		PriorityQueue<Element> minHeap = new PriorityQueue<>(new myComparator());
+		int len = 0;
+		int[] result;
+		for (int i = 0; i < arrayOfArrays.length; i++) {
+			int[] array = arrayOfArrays[i];
+			len += array.length; //the length of result array is the sum of 
+			                     //length of each array in the arrayOfArrays
+			if (array.length != 0) { //initially add first entry of each array
+			                         //into minHeap as start pointer
+				minHeap.offer(new Element(i, 0, array[0]));
+			}
+		}
+		result = new int[len];
+		int cur = 0;//pointer of result array
+		Element temp;
+		while (!minHeap.isEmpty()) {
+			temp = minHeap.poll();
+			result[cur++] = temp.value;
+			//For minHeap record current Element of each array.
+			//Now we need to update current Element¡¯s next Element into
+			//minHeap from its locating array. But first we need
+			//to check if last added Element is last Element in
+			//its locating array
+			if (temp.indexOfColumn + 1 < arrayOfArrays[temp.indexOfRow].length) {
+				temp.indexOfColumn++;
+				temp.value = arrayOfArrays[temp.indexOfRow][temp.indexOfColumn];
+				minHeap.offer(temp); //reuse temp
+			}
+		}
+		return result;
+	}
 }

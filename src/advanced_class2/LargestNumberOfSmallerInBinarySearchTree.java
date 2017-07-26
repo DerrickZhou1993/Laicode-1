@@ -1,4 +1,6 @@
 package advanced_class2;
+
+
 /**
  * 
  * @author guoyifeng
@@ -52,5 +54,30 @@ package advanced_class2;
  * case 2: if(cur.val >= target) do not update solution_so_far, cur = cur.left;(find from smaller one)
  */
 public class LargestNumberOfSmallerInBinarySearchTree {
+	class TreeNode {
+		public int key;
+		public TreeNode left;
+		public TreeNode right;
 
+		public TreeNode(int key) {
+			this.key = key;
+		}
+	}
+
+	public int largestSmaller(TreeNode root, int target) {
+		if (root == null) {
+			return Integer.MIN_VALUE;
+		}
+		TreeNode cur = root;
+		int tmpMax = Integer.MIN_VALUE;
+		while (cur != null) {
+			if (cur.key < target) {
+				tmpMax = cur.key;
+				cur = cur.right;
+			} else {
+				cur = cur.left;
+			}
+		}
+		return tmpMax;
+	}
 }
