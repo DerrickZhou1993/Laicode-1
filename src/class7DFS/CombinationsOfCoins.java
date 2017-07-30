@@ -49,7 +49,7 @@ public class CombinationsOfCoins {
 		if(level == coins.length - 1) {// base case: if level reaches the last layer of recursion tree
 			if(target % coins[coins.length - 1] == 0) { // if the current combination can match the target
 				plan.add(target / coins[coins.length - 1]);
-				result.add(new ArrayList<Integer>(plan));
+				result.add(new ArrayList<Integer>(plan));//a copy of current
 				plan.remove(plan.size() - 1); // delete last element to make next backtracking have original condition
 			}
 			return;

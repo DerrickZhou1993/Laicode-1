@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * 
  * @author guoyifeng
- * 	Given N pairs of parentheses “()”, return a list with all the valid permutations.
-
+	 Given N pairs of parentheses "()", return a list with all the valid permutations.
+	
 	Assumptions
 	
 	N >= 0

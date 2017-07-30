@@ -60,29 +60,37 @@ package class4BinaryTreeAndBinarySearchTree;
  * This solution is based on the primary property of balanced binary tree
  */
 public class CheckIfBinaryTreeIsBalanced {
-	public boolean isBalanced(TreeNode root) {
-	    // Write your solution here.
-		if(root == null) {
-			return true;
-		}
-		
-		int leftHeight = getHeight(root.left);
-		int rightHeight = getHeight(root.right);
-		if(Math.abs(leftHeight - rightHeight) > 1) {
-			return false;
-		}
-		
-	    return isBalanced(root.left) && isBalanced(root.right);
-	  }
+	/*
+	 * time : O(nlogn)
+	 */
+//	public boolean isBalanced(TreeNode root) {
+//	    // Write your solution here.
+//		if(root == null) {
+//			return true;
+//		}
+//		
+//		int leftHeight = getHeight(root.left);
+//		int rightHeight = getHeight(root.right);
+//		if(Math.abs(leftHeight - rightHeight) > 1) {
+//			return false;
+//		}
+//		
+//	    return isBalanced(root.left) && isBalanced(root.right);
+//	  }
+//	
+//	private int getHeight(TreeNode root) {
+//		if(root == null) {
+//			return 0;
+//		}
+//		
+//		int left = getHeight(root.left);
+//		int right = getHeight(root.right);
+//		
+//		return Math.max(left,right) + 1;
+//	}
 	
-	private int getHeight(TreeNode root) {
-		if(root == null) {
-			return 0;
-		}
+	public boolean isBalanced(TreeNode root) {
 		
-		int left = getHeight(root.left);
-		int right = getHeight(root.right);
-		
-		return Math.max(left,right) + 1;
+		return false;
 	}
 }
