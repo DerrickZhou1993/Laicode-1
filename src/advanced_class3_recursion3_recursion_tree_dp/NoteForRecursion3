@@ -1,0 +1,160 @@
+Advanced Recursion
+
+Four levels of understanding the recursion:
+	Level 1: Recursions are functions which call themselves
+	Level 2: Recursions are aiming to convert greater problem into smaller same problem
+	Level 3: Recursions' base case and recursive rule determination
+	Level 4: The input argument list of each recursion function in each call-stack level must be consistent with each other
+	  	
+Q1: Tree + Recursion first type problem
+	Use recursion to return values in a bottom-up way in balanced tree
+	
+	Q1.1 Determine whether a binary tree is a balanced binary tree (O(nlogn) solution)
+			Definition of balanced tree:
+				- the tree has minimum possible overall height
+				- no leaf is too further anyway. i.e 0 or 1, from root than other leaf
+				- left and right sub-trees have similar height, i.e difference is 0 or 1 (balanced height)
+				
+		Old solution : O(nlogn)  recursion function invokes recursion function
+			public boolean isBalanced(TreeNode root) {
+			    // Write your solution here.
+				if(root == null) {
+					return true;
+				}
+				
+				int leftHeight = getHeight(root.left);
+				int rightHeight = getHeight(root.right);
+				if(Math.abs(leftHeight - rightHeight) > 1) {
+					return false;
+				}
+				
+			    return isBalanced(root.left) && isBalanced(root.right);
+			  }
+			
+			private int getHeight(TreeNode root) {
+				if(root == null) {
+					return 0;
+				}
+				
+				int left = getHeight(root.left);
+				int right = getHeight(root.right);
+				
+				return Math.max(left,right) + 1;
+			}
+			
+		Better solution: Three-Step Solution O(n)
+		
+	Q1.2 Midterm 2 Q2
+		Given a binary tree in which each node element contains a number. Find the maximum possible
+		sum from one leaf node to another leaf node 
+		The maximum sum path may or may not go through root.
+		Expected time complexity is O(n)
+		
+		
+	Q1.3 Laicode.com class 20 Maximum Path Sum Binary Search 2
+		Get Maximum sum of the path cost from any node to any node(not necessarily from leaf to leaf)	
+		
+
+Q2. Tree + Recursion Second Type Problem: (Path problem in binary tree) 
+	Discussion:
+		Note that: Tree associated problems, path problem can be categorized to two types:
+						class1: 人字形 path, usually pass Integer value from bottom to top (Eg, Q1.1-Q1.3)
+						class2: from root going down.直上直下 path
+								Key point: carry a straight up and down(直上直下) path prefix(非人字形) while traversing the tree:
+								eg: a: complete path from leaf to root
+									b: sub-section of complete path from path to root
+									10
+								   /  \	
+								  -2 bp   7
+								 /  \
+								8   -4 = cur
+								Prefix_of_path = {10, -2, -4}	
+								max = 10 + 7 = 17
+								
+Q3  Tree + Recursion Third Type Problem: Tree Serialization Problem
+	Q3.1  Given a binary tree, covert it to a Doubly Linked List(DLL) in in-order sequence
+		 			     10 cur 
+		 				/  \
+		 			   5     15 
+		 			  / \   /  \
+		 			 2   7  12  20
+		  output: 2 <-> 5 <-> 7 <-> 10 <-> 12 <-> 15 <-> 20
+		         head              prev    cur
+		         
+		   Key points: 
+		   1: never lose control over the head pointer of linked list
+		   2: need to record previous node
+		   
+Q4 Tree + Recursion Third Type Problem: Tree De-Serialization Problem
+	Reconstruct a tree by using xxx-order and in-order traversal sequeces
+	
+	
+	tips for xxx-order traversal:
+	eg: 
+		pre-order: 1 2 3    two trees below are different but post-oeder and pre-order are identical
+		post-order: 3 2 1
+							Tree1      Tree2
+							1            1
+						   /              \
+						  2                2
+						 /                  \
+						3                    3
+		So only we have xxx-order and in-order can we determine a unique tree
+			reason: 
+				1. pre-order -> we can confirm the root of whole tree(first node of pre-order sequence), 
+				   but all following nodes we do not know which side they are in the tree. so we need 
+				   another order sequence of nodes
+				2. in-order separates all left subtree nodes on the left of root found from pre-order
+				                      all right subtree nodes on the right of root found from pre-order
+				                      
+				 example: tree in Q3
+				 index：                   0	1		2	3		4	5		6
+				 pre-order: 10	5 ||	2	7  |  	15	12 ||	20
+				 in-order:  2	5 ||	7	10 | 	12	15 ||	20
+				 
+		So basic solution idea to Q4 is to separate global problem into two parts(recursively), return 
+		a root node of subtree on each side
+			find 10 as radical root of tree via pre-order, then look at 10 in in-order to determine which part is left subtree and right subtree
+			then recursively find second layer left subtree root is 5 via pre-order, then find left and right subtree in  {2 5 7}, then link 5 as 10's left child
+							...
+			what we need in recursion function:  pre-order array, pre-order left limit, pre-order right limit, 
+												 in-order array, pre-order left limit, pre-order right limit
+												 A HashMap to map node's index in pre-order array and in-order array with O(1) time
+				
+					
+		
+	Q3.1 given pre-order and in-order sequence of all nodes, reconstruct the tree
+	
+	Q3.2 given post-order and in-order sequence of all nodes, reconstruct the tree
+	
+	Q3.3 given level-order and in-order sequence of all nodes, reconstruct the tree
+								20
+							    / \
+							   8   22
+							  / \   
+							 4  12
+							    / \
+							   10  14
+							   
+		index:      0	1	2	3	4	5	6
+		in-order:   4	8	10	12	14 |20 |22
+		level-order:20	8	22	4	12	10	14
+	
+	Solution idea: for the tree may not be a BST, so we could not intuitively cut level order into two halves
+				   so we need to use a HashSet to record what appear on the left side of 20(which is the first element in level order so it is radical root of tree)
+				   
+				   step 1: pick the 1st element from level-order, find the index of 20 in in-order sequence -> index = 5
+				   		   Thus, in-order sequence can be correctly divided into two parts
+				   		   Meanwhile, we can put all elements belonging to the left part into a HashSet = {4,8,10,12,14}
+				   		   
+				   step 2: Divide the level-order into two parts
+				   Iterate over each element in the level-order, and check each one against the HashSet. If it is in the HashSet, we put it into the left part
+				   as the new level-order for the recursion function
+				   
+				   Time Complexity = O(n * height) = O(n ^ 2) for worst case
+				   Space Complexity = O(n ^ 2) for we have to allocate two temporary lists in each level
+				   		   
+				   		   
+				   		   
+				   		   
+				   		   
