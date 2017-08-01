@@ -1,0 +1,22 @@
+Question:
+	A method has 71% return 1 and 29 % return 0. How to make this method return 1 or 0 with 50% probability?
+	
+	
+	Basic idea:
+		run this method 2 times:
+			if return 1 and 0, return 1
+			if return 0 and 1, return 0
+			if return 1 and 1, call this function 2 times again until (1,0) or (0,1)
+			if return 0 and 0, call this function 2 times again until (1,0) or (0,1)
+			
+			reason:
+			the probability of (1,1) = 0.71 * 0.71
+			the probability of (1,0) = 0.71 * 0.29
+			the probability of (0,1) = 0.29 * 0.71
+			the probability of (0,0) = 0.29 * 0.29
+			
+			so (1,0) and (0,1) has the same probability to represent 50%
+			
+			and keep calling function twice would not end up with dead loop
+			for (0.29 * 0.29 + 0.71 * 0.71) ^ n is probability of not stopping
+			with n becoming large, the chance is quite small. 

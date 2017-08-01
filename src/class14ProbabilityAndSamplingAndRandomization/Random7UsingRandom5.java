@@ -28,4 +28,18 @@ public class Random7UsingRandom5 {
     return 5 * RandomFive.random5() + RandomFive.random5(); // construct random(25)
   }
   
+  /*
+   * solution 2
+   */
+//  public int random7() {
+//		while (true) { // impossible dead loop for chance is less and less with no
+//		               // return (4/25) ^ n for n times no return
+//		  //generate a random number [0,24]
+//		  int num = 5 * RandomFive.random5() + RandomFive.random5(); 
+//			if (num < 21) {
+//				return num % 7;// return 0-6 with same probablity
+//    }		
+//		}
+//	}
+  
 }
