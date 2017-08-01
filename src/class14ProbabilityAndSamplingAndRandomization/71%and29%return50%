@@ -19,4 +19,4 @@ Question:
 			
 			and keep calling function twice would not end up with dead loop
 			for (0.29 * 0.29 + 0.71 * 0.71) ^ n is probability of not stopping
-			with n becoming large, the chance is quite small.
+			with n becoming large, the chance is quite small. 
