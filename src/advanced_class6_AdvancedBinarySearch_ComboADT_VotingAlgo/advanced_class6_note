@@ -1,0 +1,165 @@
+Q1 Binary Search related problems
+		Q1.1 two sorted array find median / k-th smallest element from them
+	A[] = {2,5,7,10,13}
+	B[] = {1,3,4,13,20,29}
+	k = 5
+	output 5
+	
+	Solution1: 
+	two pointers i and j, move smaller one  (like k-way merge)
+	Time Complexity = O(k)
+	
+	Solution2: Binary Search
+	
+	
+Q2 Sliding window
+	Q2.1 Sliding window of size k, always return the max element in the window size (k)
+	index 0 1 2 3 4 5 6 7 8
+	      1 3 2 5 8 9 4 7 3
+	        _____
+	
+	General solution to find max/min value:
+		1. DP
+		2. Heap(PriorityQueue)
+		
+		Solution1: maxHeap:
+						initialize maxHeap with k elements
+						1 new element from right side comes into the heap
+						1 left-most element should be removed from the sliding window. Here we have challenge we cannot remove 
+						  random element in the heap (we can only remove top element in the heap!!!) 
+						  
+						  we use lazy deletion tricks
+						  eg: {1 3 2 5} when new element comes into heap, we do not delete going-out elements at once
+						  				we can temporarily keep them in the heap until they becomes the 
+						  				top element in the heap
+						  				
+						  class Element {
+						  	int value; // key in the heap
+						  	int index; // index in the array
+						  }
+						  
+						  1 3 2 5 8 9 4 7 3
+						              _____
+						  
+						  heap: {1(0), 3(1), 2(2), 5(3), 8(4), 9(5), 4(6), 7(7)}
+						  
+						  Time complexity:
+						  	for each sliding, the amortized time = O(1 * log(n))
+						  	Total time for sliding the window (n - k) times = O((n - k) * log(n)) (deletion in heap is logk)
+						  	
+						  	
+						  	Solution3: 
+						  		index 0 1 2 3 4 5 6 7 8
+						  		
+	     							  1 3 2 5 8 9 4 7 3
+	     							  _____
+	     					 		 	 
+	     				     deque || 1 <- 3 <- 2 <- 5 <- 8 <- 9 <- 4 <- 7 <- 3
+	     				  
+	     				  deque maintain a descending sequence(for former elements smaller than new elements cannot be largest element)
+	     				  and what we need to return is the left-most element in the deque
+	     				  and for we have to return left-most element, so we cannot use stack because we have to method to return bottom elemenet in a stack
+	     				  so we use deque
+	     				  
+	     				  
+	     				  when new added element is greater than former one, delete former for it has no chance of 
+	     				  becoming the largest number in the sliding window
+	     				  when new added element is less than former one, keep former element in the deque for it still 
+	     				  get chance of becoming the largest num in the sliding window
+	     				  
+	     				  elements out of sliding window bounds, delete directly
+	     				  
+	     				  Time complexity analysis: 
+						  							Time for each move
+						  							worst case O(n)
+						  							amortized time = O(1)
+						  							total time for all moves = O(n)
+						  
+						  
+						  
+Q3 Combination of Data Structure
+		Q3.1 How to design a LRU(Least Recently Used) Cache
+			when facing system design problems, we first need to discuss with interviewer about use cases(APIs)
+				Use cases:
+					1. add
+					2. search(cache/miss)
+						a.HashTable <key = request, value = reference of DLL node>
+					3. adjust the priority of each entry in the cache
+						a. doubly linked list
+					4. delete 
+						the same DLL can be used here
+						  
+						  
+						  
+		Q3.2 given an unlimited stream of chars, find the first non-repeating character from stream O(1) time
+			
+			index 0    1    2    3    4
+			data  a1   b1   c1   d    a2
+			sol	  a    a    a    a    b1
+			
+			Use cases:
+				1. non-repeating: we need to somehow record what kind fo letters have appeared
+					a.HashMap<key = char, value = ListNode reference>
+					
+				2. Which one is the first? How to maintain an order?
+					a. When a new element comes in
+						i.  we found that current solution should be replaced. we need to update the 
+						    solution to the next one
+						ii. we found that a candidate somewhere in the middle is repeated twice. We
+						need to delete it from the candidate
+					
+					Doubly LinkedList  N1(a) <-> N2(b) <-> N3(c) <-> N4(d)
+					
+					a.HashMap<key = char, value = ListNode reference>
+					
+					<a,null>
+					<b,n2>
+					<c,n3>
+					<d,n4>
+					
+					case 1: if a is not in the HashMap -> a has never appeared;
+					case 2: if a is in the HashMap with a non-null value -> a has apperaed exactly once
+					case 3: if a is in the HashMap with a null value -> a has appeared > 1 times
+					
+					
+Q4 Voting Algorithm (gang war)
+	Q4.1 Given an integer array with possible duplicates, and an unknown integer duplicates has taken more than half entry
+	     of array (>50%) how to find this integer efficiently ?
+	     
+	     Solution 1:
+	     	sort the array and return the median
+	     
+	     Solution 2:
+	     	HashMap<key = number, value = counter>
+	     	Time = O(n) Space O(n)
+	     	
+	     Solution 3: Voting Algorithm
+	     
+	 Q4.2 what if only > 1/3?
+	 
+		 Pair1 = <candidate1, counter1>
+		 Pair2 = <candidate2, counter2>
+		 A    B    C
+		 A    B    C
+		 A    B    C
+		 A    B
+		 A
+		 A
+	     
+					
+		Q4.2 what if only > 1/k ?			
+			maintain k-1 Pairs
+			
+			Time complexity: O(nk)
+			Space   O(k)		
+					
+					
+					  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
+						  
