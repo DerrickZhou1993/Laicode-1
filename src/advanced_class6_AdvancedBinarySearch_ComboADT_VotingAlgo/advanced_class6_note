@@ -58,7 +58,7 @@ Q2 Sliding window
 	     				  
 	     				  deque maintain a descending sequence(for former elements smaller than new elements cannot be largest element)
 	     				  and what we need to return is the left-most element in the deque
-	     				  and for we have to return left-most element, so we cannot use stack because we have to method to return bottom elemenet in a stack
+	     				  and for we have to return left-most element, so we cannot use stack because we have no method to return bottom elemenet in a stack
 	     				  so we use deque
 	     				  
 	     				  
