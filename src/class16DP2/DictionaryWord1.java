@@ -49,7 +49,7 @@ public class DictionaryWord1 {
 				}
 			}
 		}
-		return M[input.length()];
+		return M[input.length() - 1];
 	}
 
 	private Set<String> toSet(String[] dict) {
