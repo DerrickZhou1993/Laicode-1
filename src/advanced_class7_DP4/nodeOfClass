@@ -1,0 +1,174 @@
+Q1.1 Longest common substring/subsequence 
+	example student & sweden, then return "den"
+	
+	A[] = sweden; size = m;
+	B[] = student; size = n;
+	
+	1. Base case: empty string  M[0][0] = 0;
+								M[0][j] = 0 for all j;
+								M[i][0] = 0 for all i;
+	
+	M[i][j] represents A[0...i - 1] and B[0...j - 1] the longest common substring's length (including
+	the (i)th letter of S1 and the (j)th letter of S2)
+	
+	induction rule
+	M[i][j] = M[i - 1][j - 1] + 1   if A[i] == B[j]
+	           0                    else     
+	  
+	   "" s t u d e n t         
+	   0  1 2 3 4 5 6 7         
+	"" 0  0 0 0 0 0 0 0
+  s	1  0  1 0 0 0 0 0 0
+  w	2  0  0 0 0 0 0 0 0
+  e 3  0  0 0 0 0 1 0 0
+  d	4  0  0 0 0 1 0 0 0
+  e	5  0  0 0 0 0 2 0 0
+  n	6  0  0 0 0 0 0 3 0
+  
+  Time = O(m * n)
+	  
+Q1.2 Longest common sub-sequence
+
+example student & sweden, then return "sden"
+	
+	1. Base case: empty string  M[0][0] = 0;
+								M[0][j] = 0 for all j;
+								M[i][0] = 0 for all i;
+	
+	M[i][j] represents A[0...i - 1] and B[0...j - 1] the longest common sub-sequence's length (might not
+	including the (i)th letter of S1 and the (j)th letter of S2)
+	
+	induction rule
+	M[i][j] = M[i - 1][j - 1] + 1   if A[i] == B[j]
+	           max(M[i - 1][j], M[i][j - 1])    else     
+
+	   "" s t u d e n t         
+	   0  1 2 3 4 5 6 7         
+	"" 0  0 0 0 0 0 0 0
+  s	1  0  1 1 1 1 1 1 1
+  w	2  0  1 1 1 1 1 1 1
+  e 3  0  1 1 1 1 2 2 2
+  d	4  0  1 1 1 2 2 2 2
+  e	5  0  1 1 1 2 3 3 3
+  n	6  0  1 1 1 2 3 4 4
+  
+  
+ Q2.2  longest ascending sub-sequence
+ 	example:
+ 		{1,2,4,3,7,6,4,5}
+ 		longest ascending sub-sequence is {1,2,3,4,5}
+ 		
+ 		1.Base case: M[0] = 1
+ 		2.Induction rule: M[i]: from 0th element to i-th element, the value of the longest
+ 		  ascending subsequence (including the i-th element) 
+ 		  
+ 		  M[i] = Max(M[j] + 1)    if input[j] < input[i]  (0 <= j < i)
+ 		  			1             there is no such j (input[i] is smaller than all the input[j]) 
+ 		  
+ 		  linear scan and look back to all the elements behind current element
+ 		  input[N] = {1,2,4,              3,          7,      6,   4,   5}
+ 		           
+ 		              1 2 3               3           4       4    4     5
+ 		              	  max(2+1,1+1)	 max(2+1,    max(3+1, 
+ 		                                    1+1)         3+1,
+ 			                                             2+1,
+ 			                                             1+1)
+ 			                                             
+ 	Time = O(n ^ 2)       we have n elements and for each element we have to linear scan n-1 elements before current element
+ 	
+ 	
+ 	Solution2: find the smallest element y in the solution that is > x. Then we can replace y with x.
+ 	           If we cannot improve the solution then we can add x at the end of the current solution
+
+
+Q3 Pizza problem
+
+	index    0 1 2 3 4 5 6 7 8 9
+	         2 3 4 1  ...... 6 5
+	
+		M[0][9]   case 1: if we take left pizza
+							input[0] + M[1][8]               if input[1] < input[9]
+							input[0] + M[2][9]               else
+							
+				  case 2: if we take right pizza
+				       		input[9] + M[0][7]               if input[0] < input[8]
+							input[9] + M[1][8]               else
+							
+					
+					Base case: 1 piece of pizza
+								- M[0][0] 
+						       2 pieces of pizza
+						        - M[i][i+1] = max(input[i], input[i+1])
+						        
+				    induction rule:
+				    
+				    		M[i][i]   case 1: if we take left pizza
+							input[i] + M[i+1][j-1]             if input[i+1] < input[j]
+							input[i] + M[i+2][j]               else
+							
+				  					   case 2: if we take right pizza
+				       		input[j] + M[i][j-2]               if input[i] < input[j-1]
+							input[j] + M[i+1][j-1]             else
+
+Q4.Most number of points in 2D space problems
+	Q4.1 given an array of coordinates of points, how to find largest number of points that
+	     can be crossed by a same line in 2D space
+	     
+	     to define a line: y = k * x + b   (slope-intercept form)
+	     
+	     solution 1: for for loop {
+	     				check all the rest of ponts, to see if they are on this line
+	     			} 
+	     			time = O(n ^ 3)
+	     			
+	     			
+	     solution 2:
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+Q4.2 Given an array of coordinates of points, how to find the largest number of points
+	 that can form a set such that any pair of points in the set can form a line with
+	 positive slope
+	 
+	 	Solution:
+	 		slope = (y2 - y1) / (x2 - x1) > 0
+	 		
+	 		if x1 < x2, then we must have y1 < y2
+	 		
+	 		the question can be converted to the longest ascending sub-sequence
+	 		
+	 		step 1: sort the input points according to their x-coordinates. Result is put to A[n]
+	 		
+	 			time = O(nlogn)
+	 		step 2: A[n] = {...}
+	 		find the longest ascending sub-sequence in A[n] according to their y-coordinates.
+	 		Time = O(n ^ 2)   optimized to O(nlogn)
+	 		
+	 		
+Q5  generate random maze
+		use 0-1 matrix to represent the graph
+	 		
+	     
+	     
+
+
+Q6	 count array 
+		merge sort
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
+	     
