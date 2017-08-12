@@ -1,0 +1,67 @@
+Trie   ->    Retrieve
+	A data structure
+	
+	Trie is different from what in the BST
+	
+	- the key must be sequence  (e.g. String, 32 consecutive bits(int))
+	- the actual searching key is associated with the path from root to the node
+		  --> The actual value is on the edge instead of node
+		  
+
+    Question: Suppose you are going to design a dictionary. How will you do it?
+    	Assumptions:
+    		n - # of words
+    		m - length of the string/word
+    			1. Use cases:
+    				- search(word)
+    				- delete
+    				- add
+    				- find all words with given prefix
+    				
+    			2.options of data structure                                  search()                delete()                add()
+    				- HashSet/HashMap (if not necessary for sorting)          O(m)                     O(m)                  O(m)            
+    				- Balanced BST                                            O(mlogn)                 O(mlogn)              O(mlogn)
+    				- Sorted ArrayList                                        O(mlogn)                 O(mlogn + n)          O(mlogn + n)
+    				
+    				- Trie                                                     O(m)                       O(m)                  O(m)
+    				
+    				
+    				for HashMap:
+    					hashCode() - O(m)  for each character (m) in String invoke hash()
+    					equals()   - O(m)
+    				
+    				for Balanced BST
+    					compare()  - O(m)   for BST we have to compare String's value(each char) to decide go left or go right
+    					                    and for BST we have to use O(logn) time to find certain word in n words BST
+    					                    
+    					                    
+    					                  
+  	Tire's drawback
+  		Time: 1. if stored on disk, more random disk accesses (very expensive)
+  		Space: 1. each TrieNode has extra space consumption -> extra space usage
+  		       2. memory allocation fragmentation
+  		       			especially when the Trie is sparse
+    				
+    				
+    Use cases for using Trie
+    	- String or sequence typed elements
+    	- fast search/add/delete
+    	- grouping common prefix, both for time/space complexity
+    	- problems related with prefix/matching
+    	
+    	
+    	
+    	
+    Implementation of Trie
+    
+    // Assumption: 26 lower case english letters
+    class TireNode {
+    	boolean isWord;
+    	TrieNode[] children; // size 26 array, index of ('c' - 'a')
+    }
+    
+    //in general
+    class TireNode {
+    	boolean isWord;
+    	Map<Character, TrieNode> children; // sava space
+    }
