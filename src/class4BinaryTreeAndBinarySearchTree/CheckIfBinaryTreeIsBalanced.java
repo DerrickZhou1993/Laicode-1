@@ -62,6 +62,7 @@ package class4BinaryTreeAndBinarySearchTree;
 public class CheckIfBinaryTreeIsBalanced {
 	/*
 	 * time : O(nlogn)
+	 * 			we have log_2n layers and for each layer we have to call a O(n) recursion function
 	 */
 //	public boolean isBalanced(TreeNode root) {
 //	    // Write your solution here.

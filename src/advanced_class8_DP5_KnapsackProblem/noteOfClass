@@ -1,0 +1,59 @@
+Knapsack Problem
+	
+	
+	
+	P1. Naive 0/1 knapsack problem
+	Given a set of N items. Each item has a weight weights[i] (i = 1 ... N). The knapsack has a weight capacity W. What's the maximum
+	total weight you can get?
+	
+	example:
+		W = 8
+		weights[] = 4 3 5
+		
+		basic idea: ×ó´ó¶Î   + ÓÒÐ¡¶Î
+		
+		M[i][w]: boolean
+					represents whether we can get exact weight = w by using the first i items (may not include i-th item)
+					
+		Base case:
+				M[0][0] = true    ---> first 0 item to get 0 weight  -> regard it as true
+				{ M[0][1]  .... M[0][w] } = false    you cannot get weight > 0 with 0 item
+				
+				
+		Induction rule:
+				M[i][w]:
+						we are looking at the i-th item (its weight is weights[i])
+						
+				M[i][w] = M[i - 1][w] || M[i - 1][w - weights[i]]
+				
+				case 1:
+				
+				case 2:
+				
+				
+				
+	
+	
+	
+	P1a Naive 0/1 knapsack problem
+	Given a set of N items. Each item has a weight weights[i] (i = 1 ... N). The knapsack has a weight capacity W. What's the total number
+	of unique ways to exactly fill the knapsack
+	
+	W = 5
+	weights[] = {2,3,5}
+	output = 2;
+	
+	
+	
+	
+	P1b naive 0/1 knapsack problem, get minimum numbers of items
+	Given a set of N items. Each item has a weight weights[i] (i = 1 ... N). The knapsack has a weight capacity W. What's the minimum number
+	of items to exactly fill the knapsack
+	
+	
+	
+	
+	
+	P2. Classic 0/1 knapsack problem
+	Given a set of N items. Each item has a weight weights[i] and a value v[i] (i = 1...N). The 
+	knapsack has a weight capacity W. What's the maximum total value you can get

@@ -63,7 +63,7 @@ public class GetKeysInBinarySearchTreeInGivenRange {
 		if(root.key >= min && root.key <= max) {
 			list.add(root.key);
 		}
-		if(root.key < max) { // only if currrent key < max, it is meaning ful to go to right subtree
+		if(root.key < max) { // only if current key < max, it is meaningful to go to right subtree
 			helper(root.right,min,max,list);
 		}
 	}

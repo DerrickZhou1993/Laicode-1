@@ -1,0 +1,141 @@
+Q1
+	Q1.1 Find common element in 2 arrays
+		must confirm detailed assumptions as much as possible
+	Q1.2 Find commom element in 3 arrays
+	
+	Q1.3 Find common element in k arrays
+		General K problem solution
+		  1. Iterative ways:
+		   A1 A2->A12            
+		          A3->A13        
+		              A4->A14    
+		              ...        
+
+		   
+		  2.Binary Reduction
+		  	A1   A12
+		  	A2       ->   A14
+		    A3   A34
+		  	A4                -> A18
+		    A5   A56
+		    A6       ->   A58
+		    A7   A78
+		    A8 
+		   ...                          
+		   Time Complexity:
+		   		
+		   
+		   
+		  3.k pointers (always move smaller pointer)
+		  			
+		  	xxxxxxxxxxx
+		   i->
+		   yyyyyyyyyyyyyy
+		   j->
+		   zzzzzzzz
+		   m->
+		   ...	
+		
+		
+Q2 Best for search (BFS2) 
+	example: find k-th or k extreme number, BFS2 may be potential solution
+	BST1 is used when weight for each step is the same
+	Q2.1 Given a dict containing list of strings, to find two strings which share no identical character and have max product of length
+	
+	potential idea: 
+		1.DP
+		2.BFS2
+			a. initial state <s1 x s2>
+			b. expansion / generation rule    expand a state <si x sj> 
+											  1.generate <si+1£¬ sj>
+											  2.generate <si, sj+1>
+			c. termination condition
+				1. when we popped out state <si, sj> satisfying that si and sj do not share any common letter -> get answer
+				2. PriorityQueue is empty -> no answer
+		3.DFS
+		4.brute force
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	Q2.2 How to find the k-th smallest number in the f(x, y, z) = 3 ^ x * 5 ^ y * 7 ^ z (int x > 0, y > 0, z > 0)
+		BFS2: 
+			a. initial state <x=1, y=1, z=1>
+			b. expansion / generation rule    expand a state <x y z> 
+											  1.generate <x + 1, y ,z>
+											  2.generate <x, y + 1, z>
+											  3.generate <x, y, z + 1>
+			c. termination condition
+				when the k-th element is popped out of heap
+			d.deduplication when generating a new state
+			
+	Q2.3 3d distance
+		distance to origin = sqrt(x^2 + y^2 + z^2)
+		
+	Q2.4
+		Given a gym with k pieces of equipment and some obstacles. 
+		 We bought a chair and wanted to put this chair into the gym such that  the sum of the shortest path cost 
+		 from the chair to the k pieces of equipment is minimal. The gym is represented by a char matrix, ¡®E¡¯ denotes a cell with equipment, 
+		 ¡®O¡¯ denotes a cell with an obstacle, 'C' denotes a cell without any equipment or obstacle. You can only
+		 move to neighboring cells (left, right, up, down) if the neighboring cell is not an obstacle. The cost of moving from one cell to its
+		 neighbor is 1. You can not put the chair on a cell with equipment or obstacle.
+		Examples
+		we have k equipments
+		{ { 'E1', 'O', 'C' },
+
+  		{  'C', 'E',  'C' },       run Dijkstra starting from E1 O(klogk) for k nodes and here we have n^2 nodes
+
+  		{  'C',  'C',  'C' } }
+  		
+  		
+  		{ { 'E', 'O', 'C' },
+
+  		{  'C', 'E2',  'C' },       run Dijkstra starting from E2 
+
+  		{  'C',  'C',  'C' } }
+  		
+  		class Cell {
+  			int x,
+  			int y;
+  			ArrayList<Integer> costFromEquipments;
+  		}
+  		
+  		for each equipment, we run Dijkstra
+  		for (k) {
+  			run a Dijkstra    
+  		}
+  		
+  		Time complexity O( n ^ 2 * log(n ^ 2) * k)      pop from heap need log(x), we have n^2 positions, k equioments
+  		
+ Q3 problem solving
+ 	Given a single computer with a single CPU and a single core, which has 2GB memory and 1GB available for use,
+ 	it also has two 100GB hard drives. How to sort 80GB integers of 64bits 
+ 	
+ 	Assumptions
+ 	...
+ 	
+ 	step 1: use 1GB memory to sort each 200MB data. Thus we have 400 chunks of sorted data.
+ 	step 2: 400-way merge   -> k way merge solution -> 	k pointers and PQ
+ 	
+ 	
+Q4 Histogram Problem
+	Q4.1 find largest rectangle in histogram
+		Solution 1: explode from the center
+						for each index i, explode from the center, go left and go right
+						Time O(n ^ 2)
+		Solution 2:
+		
+	
+	
+	Q4.2 Water Trapped
+  		

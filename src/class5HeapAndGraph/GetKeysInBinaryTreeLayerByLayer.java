@@ -57,7 +57,12 @@ public class GetKeysInBinaryTreeLayerByLayer {
 		queue.offer(root);
 		while(!queue.isEmpty()) {
 			List<Integer> inner = new ArrayList<>();
-			int size = queue.size();
+			int size = queue.size(); // size is not immutable, 
+									 // so it has to be initialized out
+			                         // of for loop
+			// for loop is to guarantee all nodes
+			// on the same layer will be traversed
+			// at the same time
 			for(int i = 0; i < size; i++) {
 				TreeNode cur = queue.poll();
 				inner.add(cur.key);

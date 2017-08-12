@@ -33,6 +33,10 @@ import java.util.Queue;
 	the 8th smallest number is 6
 
  */
+
+/*
+ * Time Complexity : O(k * log(k))
+ */
 public class KthSmallestNumberInSortedMatrix {
 	
 	class Cell {//wrapper class for cell

@@ -29,6 +29,12 @@ package class4BinaryTreeAndBinarySearchTree;
  *                      when we go to right, the min bound of current node in right subtree is known and should be updated
  * 								
  */
+
+/*
+ * time: O(n) for we have to scan each node in this tree
+ * space: O(height)
+ * 			 = O(log_2n) if this tree is balanced
+ */
 public class IsBST {
 	public boolean isBST(TreeNode root) {
 		if(root == null) {

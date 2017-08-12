@@ -57,6 +57,12 @@ package class4BinaryTreeAndBinarySearchTree;
  * what matters is the parameter design. From symmetrical property we know
  * form layer 3, what need to check is the equality between right.right == left.left && right.left == left.right
  */
+
+/*
+ * Time :  O(n) for we have to scan each node in the recursion tree
+ * 
+ *  Space: O(height)
+ */
 public class SymmetricBinaryTree {
 	public boolean isSymmetric(TreeNode root) {
 		if(root == null) {

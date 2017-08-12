@@ -22,11 +22,23 @@ import java.util.PriorityQueue;
 	A = {3, 4, 1, 2, 5}, K = 3, the 3 smallest numbers are {1, 2, 3}
 
  */
-
+/*
+ *  the comparison of time complexity on minHeap and maxHeap depends on 
+ *  the relationship between k and n values
+ */
 public class KSmallestInUnsortedArray {
 	
 	/*
 	 * solution1:MaxHeap
+	 * 		Step 1 : heapify the first k elements  time = O(k)
+	 * 		Step 2 : from the k+1-th element to the n-th element, for the current 
+	 * 	             element X, if X < maxHeap.top()  -> maxHeap.pop() and then insert(X),
+	 * 							else   do nothing
+	 * 				 we have n-k elements and each pop() and insert(X) cost O(logn) time
+	 * 		Total time = O(k + (n-k) * log(k))
+	 * 
+	 * 		BTW this method has an advantage that it can be implemented as online algorithm
+	 *      and deal with streaming data input
 	 */
 	public int[] kSmallest(int[] array, int k) {
 		if(array == null || k == 0) {
@@ -50,7 +62,7 @@ public class KSmallestInUnsortedArray {
 		for(int i = k; i < array.length; i++) {
 			if(array[i] < maxHeap.peek()) {
 				maxHeap.poll();
-				maxHeap.add(array[i]);
+				maxHeap.offer(array[i]);
 			}
 		}
 		int[] res = new int[k];
@@ -62,6 +74,9 @@ public class KSmallestInUnsortedArray {
 	}
 	/*
 	 * solution2: MinHeap
+	 * 		Step 1 : heapify the whole array     time: O(n)
+	 * 		Step 2 : keep pop() for k times      time: O(k * logn)
+	 * 	    Total time : O(n + k * logn)
 	 */
 //	public int[] kSmallest(int[] array, int k) {
 //		if(array == null || k == 0) {

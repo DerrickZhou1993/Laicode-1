@@ -59,6 +59,18 @@ package class4BinaryTreeAndBinarySearchTree;
  * So we need to find if there exists a pair whose keys are not equal instead of
  * whose keys are equal to end the recursion function!!!
  */
+
+/*
+ * Time complexity: This recursion tree is a quadtree
+ * 		recall: for a binary tree we have 2 ^ height nodes in total;
+ * 		we assume this tree is balanced, so the height of this tree is log_2n
+ * 		now for a quadtree the total number of nodes is 4 ^ log_2n
+ * 		4 ^ log_2n = n ^ 2
+ * 		So the time complexity is O(N ^ 2) for we have to scan each node in this recursion tree
+ * 
+ * 		Space O(height)
+ * 		 
+ */
 public class TweakedIdenticalBinaryTree {
 	public boolean isTweakedIdentical(TreeNode one, TreeNode two) {
 		if(one == null && two == null) {
