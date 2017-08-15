@@ -1,0 +1,38 @@
+package class4BinaryTreeAndBinarySearchTree;
+/**
+ * 
+ * @author @Yifeng
+ * Given a binary tree and a target sum, determine if the tree has a root-to-leaf path such that adding up all the 
+ * values along the path equals the given target.
+
+Example:
+Given the below binary tree and target = 16,
+
+              5
+             / \
+            4   8
+           /   / \
+          1    3  4
+         /  \      \
+        7    2      1
+return true, as there exist a root-to-leaf path 5-8-3 which sum is 16.
+ */
+public class BinaryTreePathSumToTargetI {
+	public boolean exist(TreeNode root, int target) {
+		// Write your solution here.
+		if (root == null) {
+			return false;
+		}
+		return helper(root, target, 0);
+	}
+
+	private boolean helper(TreeNode root, int target, int partial) {
+		if (root == null && partial == target) {
+			return true;
+		}
+		if (root == null) {
+			return false;
+		}
+		return helper(root.left, target, partial + root.key) || helper(root.right, target, partial + root.key);
+	}
+}
