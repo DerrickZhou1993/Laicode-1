@@ -2,7 +2,7 @@ package class19Recursion2LCA;
 /**
  * 
  * @author @Yifeng
- * Word ¡°book¡± can be abbreviated to 4, b3, b2k, etc. Given a string and an abbreviation, 
+ * Word "book" can be abbreviated to 4, b3, b2k, etc. Given a string and an abbreviation, 
  * return if the string matches the abbreviation.
 
 	Assumptions:
@@ -11,7 +11,7 @@ package class19Recursion2LCA;
 	Both input and pattern are not null.
 	Examples:
 	
-	pattern ¡°s11d¡± matches input ¡°sophisticated¡± since ¡°11¡± matches eleven chars ¡°ophisticate¡±.
+	pattern "s11d" matches input "sophisticated" since "11" matches eleven chars "ophisticate".
  */
 public class StringAbbreviationMatching {
 	public boolean match(String input, String pattern) {
