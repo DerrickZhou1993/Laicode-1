@@ -19,7 +19,7 @@ import java.util.Map.Entry;
  *  
  *  for this problem
  *  	'?' means we have to run dfs on all the brunches
- *      'a' means we have to run dfs on 'a' brunch
+ *      'a' means we have to run dfs on 'a' brunch 
  */
 public class WildCardInTrieDFS {
 	public List<String> findAllMatchWildCard(TrieNode root, String target) {
