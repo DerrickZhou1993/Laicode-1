@@ -17,7 +17,7 @@ package class11DP1;
 
  */
 /*
- * basic idea: grow left size and enumerate right size
+ * basic idea: grow left size and enumerate right size 
  */
 public class MaxProductOfCuttingRope {
 	public int maxProduct(int length) {

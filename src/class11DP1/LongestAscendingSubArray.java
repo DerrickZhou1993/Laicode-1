@@ -2,7 +2,7 @@ package class11DP1;
 /**
  * 
  * @author @Yifeng
-	Given an unsorted array, find the length of the longest 
+	Given an unsorted array, find the length of the longest  
 	subarray in which the numbers are in ascending order.
 	
 	Assumptions
