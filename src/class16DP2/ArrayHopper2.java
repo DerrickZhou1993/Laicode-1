@@ -17,7 +17,7 @@ package class16DP2;
 	
 	{2, 1, 1, 0, 2}, you are not able to reach the end of array, return -1 in this case.
  */
-public class ArrayHopper2 {
+public class ArrayHopper2 { 
 	public int minJump(int[] array) {
 		//M[i] records the minimum number of jumps needed to reach the array[n -1] 
 		int[] M = new int[array.length];
