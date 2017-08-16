@@ -17,7 +17,6 @@ public class FindAllWithPrefixInTrie {
 		List<String> result = new ArrayList<String>();
 		dfs(result, matchNode, new StringBuilder(prefix));
 		return result;
-		
 	}
 	
 	private void dfs(List<String> result, TrieNode curNode, StringBuilder curPath) {
