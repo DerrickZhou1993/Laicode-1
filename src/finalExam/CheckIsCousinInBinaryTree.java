@@ -85,10 +85,10 @@ public class CheckIsCousinInBinaryTree {
 		queue.offer(root);
 		while(!queue.isEmpty()) {
 			int size = queue.size();
-			TreeNode cur = queue.poll();
 			TreeNode parentA = null;
 			TreeNode parentB = null;
 			for (int i = 0; i < size; i++) {
+				TreeNode cur = queue.poll();
 				// check left child of current node
 				if (cur.left != null) {
 					if(cur.left == a) {

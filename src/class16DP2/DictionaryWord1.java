@@ -14,11 +14,11 @@ import java.util.Set;
 	The given dictionary is not null and is not empty and all the words in the dictionary are not null or empty
 	Examples
 	
-	Dictionary: {“bob”, “cat”, “rob”}
+	Dictionary: {"bob", "cat", "rob"}
 	
-	Word: “robob” return false
+	Word: "robob" return false
 	
-	Word: “robcatbob” return true since it can be composed by "rob", "cat", "bob"
+	Word: "robcatbob" return true since it can be composed by "rob", "cat", "bob"
  */
 
 /*

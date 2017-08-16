@@ -1,5 +1,18 @@
 package class19Recursion2LCA;
+/**
+ * 
+ * @author @Yifeng
+ * Word ¡°book¡± can be abbreviated to 4, b3, b2k, etc. Given a string and an abbreviation, 
+ * return if the string matches the abbreviation.
 
+	Assumptions:
+	
+	The original string only contains alphabetic characters.
+	Both input and pattern are not null.
+	Examples:
+	
+	pattern ¡°s11d¡± matches input ¡°sophisticated¡± since ¡°11¡± matches eleven chars ¡°ophisticate¡±.
+ */
 public class StringAbbreviationMatching {
 	public boolean match(String input, String pattern) {
 		//base case
@@ -13,6 +26,7 @@ public class StringAbbreviationMatching {
 		if(isDigit(pattern.charAt(0))) {
 			int index = 0;
 			int offset = 0;
+			// while loop is to count offset need moving in input
 			while(index < pattern.length() && isDigit(pattern.charAt(index))) {
 				offset = offset * 10 + (pattern.charAt(index) - '0');
 				index++;

@@ -25,7 +25,7 @@ public class MaxProductOfCuttingRope {
 		M[1] = 1;
 		for (int i = 2; i <= length; i++) {// current rope length
 			for (int j = 1; j < i; j++) { // left part size
-				M[i] = Math.max(Math.max(M[j], j) * (i - j), M[i]);//compare last time product with current
+				M[i] = Math.max(M[i], Math.max(M[j], j) * (i - j));//compare last time product with current
 			}
 		}
 		return M[length];
