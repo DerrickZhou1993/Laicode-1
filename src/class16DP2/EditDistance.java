@@ -11,7 +11,7 @@ package class16DP2;
 	Both strings are not null
 	Examples
 	
-	string one: "sigh", string two : "asith"
+	string one: "sigh", string two : "asith" 
 	
 	the edit distance between one and two is 2 (one insert "a" at front then replace "g" with "t").
  */

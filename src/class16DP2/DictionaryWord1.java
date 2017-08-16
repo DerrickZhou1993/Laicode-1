@@ -28,7 +28,7 @@ import java.util.Set;
  * and first limit a is included and 
  * second limit b is excluded!!!
  * 
- * so we here use input.substring(0, i + 1) to represent [0,i]
+ * so we here use input.substring(0, i + 1) to represent [0,i] 
  */
 public class DictionaryWord1 {
 	public boolean canBreak(String input, String[] dict) {
