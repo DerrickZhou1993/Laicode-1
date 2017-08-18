@@ -1,0 +1,80 @@
+        5
+
+      /    \
+
+    3        8
+
+  /   \        \
+
+1      4        11
+
+
+1. BFS1 type problems
+	When faced with problems like get element layer by layer or given the condition layer by layer
+	we first can consider solve it using BFS1
+	Example: 1). Print TreeNode Layer By Layer
+             2). Right View of Binary Tree
+             ...
+
+2. DFS type problems
+	This is most Bianry Tree problems' type. And we can further separate this kind problem into two parts
+		2.1 top-down problems
+			For this kind of problems, we need to pass value(s) from top root down to child nodes
+			Example: 2.1.1 isBST
+					 2.1.2 GetKeysInBinarySearchTreeInGivenRange
+					 2.1.3 BinaryTreePathSumToTargetI
+					 ...
+
+		2.2 bottom-up problems (three-step DFS)
+			Most classical and typical problems in Binary Tree
+			Step 1: get some value from left child and right child
+			Step 2: do some process in current layer
+					(usually check in what kind of condition we shall 
+					report current layer value to parent node and in 
+					what kind of condition we shall update global value)
+			Step3: Report processed value to parent
+				   what got by parent in Step 1 is what being sent in step3
+
+			Example: 2.2.1 LCA-like problems (LCA, DistanceOfTwoNodesInBinaryTree)
+					 2.2.2 MaxPathSum-like problems (root to leaf, leaf to leaf, any node to any node)
+					 		node to leaf, only when both lchid and rchild are not null, can we have right to update global value
+					 		any to any, prepare update global value at any condition
+					 		root to leaf, always compare global with singleMax to keep current root->leaf path max
+					 2.2.3 GetHeight, GetDepth,MinimumDepthOfBinaryTree
+					 ...
+
+3. Given level, postorder, preorder, inorder array to reconstruct a binary tree
+	3.1 reconstruct binary tree with given two arrays
+		Example:
+			ReconstructBinaryTreeWithLevelorderAndInorder
+			ReconstructBinaryTreeWithPreorderAndInorder
+			ReconstructBinaryTreeWithPostorderAndInorder
+			GetPostorderSequenceGivenPreorderAndInorder
+
+			This kind of problems we need to mapping root index in given arrays
+			find root in non-pre array and find root index in pre[],post[],level[]
+			then we can separate root, left part(left subtree) and right part (right subtree)
+			use hash_map can could count leftsubtree size (leftSize = map.get(root.key) - inLeft)
+			then recursively call the function and link root with left child and right child
+
+	3.2 given a level order array and generate a complete bianry tree
+		for this problem we can use a bianry tree's property which is also mentioned in heap
+		if root's index is i in array, then its left child index in array is 2 * i + 1
+											its right child index in array is 2 * i + 2
+		then use this property design dfs function signature
+
+4. Use Bianry Tree Property to design recursion function or solve problems
+	Example: 4.1 IsBalancedBinaryTree
+             4.2 TweakedIdenticalBinaryTree
+             4.3 SymmetricBinaryTree
+             4.4 IdenticalBinaryTree
+             ...
+
+5. Tree Traversal (recursive way and iterative way)
+	postorder
+	inorder
+	preorder
+
+6. Practical problems 
+	delete / insert / search / update TreeNode in Binary Tree
+	especially deletion (3 basic cases need considering)
