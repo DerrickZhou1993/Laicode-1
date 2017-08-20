@@ -6,6 +6,17 @@ import java.util.List;
 
 /**
  * @author yifengguo
+ * Given a set of characters represented by a String, return a list containing all subsets of the characters.
+
+    Assumptions
+
+    There could be duplicate characters in the original set.
+    ​Examples
+
+    Set = "abc", all the subsets are ["", "a", "ab", "abc", "ac", "b", "bc", "c"]
+    Set = "abb", all the subsets are ["", "a", "ab", "abb", "b", "bb"]
+    Set = "", all the subsets are [""]
+    Set = null, all the subsets are []
  */
 
 /*
