@@ -12,7 +12,10 @@ package advanced_class7_DP4;
 	Output: 4
 	Because [2, 3, 4, 5] is the longest ascending subsequence.
  */
-
+/*
+ * time = O(n ^ 2)
+ * space = O(n)
+ */
 // M[i] represents length of longest ascending sub-sequence 
 // from 0th to i-th element(including i-th element)
 public class LongestAscendingSubsequence {
