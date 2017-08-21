@@ -25,27 +25,54 @@ package finalExam;
  * Space = O(n)
  */
 public class CutNumberOfSquares {
+//	public int minItem(int num) {
+//		if (num <= 0) {
+//			return 0;
+//		}
+//		// M[i] represents minimum number of item of given number
+//		// such that each item is equal to an integer's square value
+//		int[] M = new int[num + 1];
+//		// base case
+//		M[0] = 0;
+//		M[1] = 1;
+//		
+//		for (int i = 1; i <= num; i++) { // left greater piece
+//			M[i] = i; // initialize M[i]
+//			for (int j = 1; j * j <= i; j++) {  // right smaller piece
+//				if (j * j == num) {               // is made of 0^2, 1^2, 2^2...
+//					M[i] = 1;                     // enumerates
+//					break;
+//				}
+//				M[i] = Math.min(M[i], M[i - j * j] + 1);
+//			}
+//		}
+//		return M[num];
+//	}
+	
+
 	public int minItem(int num) {
 		if (num <= 0) {
 			return 0;
 		}
-		// M[i] represents minimum number of item of given number
-		// such that each item is equal to an integer's square value
-		int[] M = new int[num + 1];
-		// base case
-		M[0] = 0;
-		M[1] = 1;
-		
-		for (int i = 1; i <= num; i++) { // left greater piece
-			M[i] = i; // initialize M[i]
-			for (int j = 1; j * j <= i; j++) {  // right smaller piece
-				if (j * j == num) {               // is made of 0^2, 1^2, 2^2...
-					M[i] = 1;                     // enumerates
-					break;
-				}
-				M[i] = Math.min(M[i], M[i - j * j] + 1);
-			}
-		}
-		return M[num];
+		int count = 1;
+		int result = helper(num, count);
+		return result;
 	}
+
+	private int helper(int num, int count) {
+		if ((int) Math.sqrt(num) * (int) Math.sqrt(num) == num) {
+			return count;
+		}
+		double maxSqrt = Math.sqrt(num);
+		int partial = (int) maxSqrt / 1;
+		helper(num - partial * partial, count++);
+		return count;
+	}
+	
+	public static void main(String[] args) {
+		CutNumberOfSquares test = new CutNumberOfSquares();
+		int a = 10;
+		System.out.println(test.minItem(a));
+	}
+
 }
