@@ -16,6 +16,9 @@ public class LongestCommonSubstring {
 		if (a == null || b == null) {
 			return null;
 		}
+		// M[i][j] represents A[0...i - 1] and B[0...j - 1] the longest common substring's length (including
+		// the (i)th letter of S1 and the (j)th letter of S2) because only current char is equal to each other
+		// can we plus 1 to M[i-1][j-1], if not equal reset it to 0 (must be contiguous diagonal in 2d matridx)
 		String[][] M = new String[a.length() + 1][b.length() + 1];
 		String result = "";
 		// base case 1
