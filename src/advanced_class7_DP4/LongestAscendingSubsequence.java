@@ -1,4 +1,17 @@
 package advanced_class7_DP4;
+/**
+ * 
+ * @author @Yifeng
+ * Given an array A[0]...A[n-1] of integers, find out the length of the longest ascending subsequence.
+
+	Assumptions
+	
+	A is not null
+	Examples
+	Input: A = {5, 2, 6, 3, 4, 7, 5}
+	Output: 4
+	Because [2, 3, 4, 5] is the longest ascending subsequence.
+ */
 
 // M[i] represents length of longest ascending sub-sequence 
 // from 0th to i-th element(including i-th element)
