@@ -20,7 +20,7 @@ Q1.1 Longest common substring/subsequence
 	"" 0  0 0 0 0 0 0 0
   s	1  0  1 0 0 0 0 0 0
   w	2  0  0 0 0 0 0 0 0
-  e     3  0  0 0 0 0 1 0 0
+  e 3  0  0 0 0 0 1 0 0
   d	4  0  0 0 0 1 0 0 0
   e	5  0  0 0 0 0 2 0 0
   n	6  0  0 0 0 0 0 3 0
@@ -47,7 +47,7 @@ example student & sweden, then return "sden"
 	"" 0  0 0 0 0 0 0 0
   s	1  0  1 1 1 1 1 1 1
   w	2  0  1 1 1 1 1 1 1
-  e     3  0  1 1 1 1 2 2 2
+  e 3  0  1 1 1 1 2 2 2
   d	4  0  1 1 1 2 2 2 2
   e	5  0  1 1 1 2 3 3 3
   n	6  0  1 1 1 2 3 4 4
@@ -131,6 +131,8 @@ Q4.Most number of points in 2D space problems
 	     								  if x1 == x2, we have another hash_map to represent lines without k
 	     								  key: Integer(value of x)
 	     								  value: Set<Point>
+	     								  
+	     				And for pair as key in hash_map, because it is an object, we need to override its equals() and hashCode() method
 	     
 Q4.2 Given an array of coordinates of points, how to find the largest number of points
 	 that can form a set such that any pair of points in the set can form a line with
@@ -154,10 +156,25 @@ Q4.2 Given an array of coordinates of points, how to find the largest number of 
 Q5  generate random maze
 		use 0-1 matrix to represent the graph
 	 		
-	     
-	     
-
-
+	     1 1 1 1 1                  1 - wall
+	     1 1 1 1 1                  0 - path
+		 1 1 1 1 1
+         1 1 1 1 1
+         1 1 1 1 1
+         
+         Basic idea: initialize a matrix with 1
+         and random maze is like to build a path 
+         from 1s. And to avoid to break the path
+         width gerater than 1, we can simply walk
+         "2 steps" to random direction(if possible) 
+         each time.(DFS)
+         
+         0 0 1 1 1
+         1 0 1 1 1
+         1 0 0 0 1
+         1 1 1 0 1
+         1 1 1 0 1
+         
 Q6	 count array 
 		merge sort
 	     
