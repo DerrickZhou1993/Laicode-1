@@ -71,7 +71,7 @@ public class GenerateRandomMaze {
 	
 	// get a random shuffle of all possible directions
 	// and follow the shuffled order to do DFS & backtrack
-	private void generate(int[][] maze, int x, int y) {
+	private void generate(int[][] maze, int x, int y) { // x, y means current coordinate
 		// static values method that returns an array containing 
 		// all of the values of the enum in the order they are declared.
 		Dir[] dirs = Dir.values();
@@ -83,7 +83,7 @@ public class GenerateRandomMaze {
 			// dfs
 			if (isValidWall(maze, nextX, nextY)) {
 				// only if the cell is a wall (meaning we have not visited before),
-				// we break the walls through to make it corridors
+				// we break the next two step walls through to make them corridors
 				maze[dir.moveX(x, 1)][dir.moveY(y, 1)] = 0;
 				maze[nextX][nextY] = 0;
 				generate(maze, nextX, nextY);
