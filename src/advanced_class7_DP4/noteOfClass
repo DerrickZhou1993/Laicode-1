@@ -123,17 +123,14 @@ Q4.Most number of points in 2D space problems
 	     			
 	     			
 	     solution 2:
-	     			hash_map
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     
+	     			2 hash_maps
+		     			first hash_map    key: pair<k,b> to represent a line (y = k * x + b)
+		     							  value: Set<Point>
+	     								  so each Pair is mapped to a set of Points and a pair can represent a line if it has k
+	     				second hash_map
+	     								  if x1 == x2, we have another hash_map to represent lines without k
+	     								  key: Integer(value of x)
+	     								  value: Set<Point>
 	     
 Q4.2 Given an array of coordinates of points, how to find the largest number of points
 	 that can form a set such that any pair of points in the set can form a line with
