@@ -20,7 +20,7 @@ Q1.1 Longest common substring/subsequence
 	"" 0  0 0 0 0 0 0 0
   s	1  0  1 0 0 0 0 0 0
   w	2  0  0 0 0 0 0 0 0
-  e 3  0  0 0 0 0 1 0 0
+  e     3  0  0 0 0 0 1 0 0
   d	4  0  0 0 0 1 0 0 0
   e	5  0  0 0 0 0 2 0 0
   n	6  0  0 0 0 0 0 3 0
@@ -47,7 +47,7 @@ example student & sweden, then return "sden"
 	"" 0  0 0 0 0 0 0 0
   s	1  0  1 1 1 1 1 1 1
   w	2  0  1 1 1 1 1 1 1
-  e 3  0  1 1 1 1 2 2 2
+  e     3  0  1 1 1 1 2 2 2
   d	4  0  1 1 1 2 2 2 2
   e	5  0  1 1 1 2 3 3 3
   n	6  0  1 1 1 2 3 4 4
