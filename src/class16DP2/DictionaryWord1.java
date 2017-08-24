@@ -35,12 +35,12 @@ public class DictionaryWord1 {
 		Set<String> dictSet = toSet(dict);
 		boolean[] M = new boolean[input.length()];
 
-		for (int i = 1; i < input.length(); i++) {
+		for (int i = 0; i < input.length(); i++) {
 			if (dictSet.contains(input.substring(0, i + 1))) {//make sure the whole sequence will be checked 
 				M[i] = true;
 				continue;//continue to next iteration of outer loop
 			}
-			for (int j = 1; j < i; j++) { // to check at current i, if there exists a j before 
+			for (int j = 0; j < i; j++) { // to check at current i, if there exists a j before 
 									      // i that guarantee substring(0,j+1) 
 										  // is a word and substring(j+1,i+1) is a word
 				if (M[j] && dictSet.contains(input.substring(j + 1, i + 1))) {
