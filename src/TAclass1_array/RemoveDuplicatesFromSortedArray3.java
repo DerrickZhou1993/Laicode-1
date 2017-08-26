@@ -20,6 +20,16 @@ package TAclass1_array;
 //                             f
 //                be
 //      s
+/*
+ * basic idea:
+ * 	fast slow and begin three pointers move to the same direction
+ *  the goal is simply remove all the elements if they have duplicates and
+ *  only keep those which only occur once
+ *  
+ *  time = O(n)  only one pass of array
+ *  space = O(1)
+ *  
+ */
 public class RemoveDuplicatesFromSortedArray3 {
 	public int removeDuplicates(int nums[]) {
 		if (nums == null || nums.length == 0) {
@@ -28,12 +38,12 @@ public class RemoveDuplicatesFromSortedArray3 {
 		int fast = 0;
 		int slow = 0;
 		while (fast < nums.length) {
-			int begin = fast;
+			int begin = fast; // begin records the first occurrence of new number in the input array
 			while (fast < nums.length && nums[fast] == nums[begin]) {
 				fast++;
 			}
-			if (fast - begin == 1) {
-				nums[slow++] = nums[begin];
+			if (fast - begin == 1) { // represents the occurrence of current number is only 1
+				nums[slow++] = nums[begin]; // then move the slow pointer
 			}
 		}
 		return slow;
