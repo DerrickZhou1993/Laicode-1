@@ -1,5 +1,9 @@
 package TAclass1_array;
-
+/*
+ * basic idea: use classical binary search template
+ * time = O(logn)
+ * space = O(1)
+ */
 public class FindMaxNumberSmallerThanTarget {
 	public int find(int[] nums, int target) {
 		if (nums == null || nums.length == 0) {
