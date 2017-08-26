@@ -1,0 +1,74 @@
+Class 1 Array related questions
+	                           ArrayList              vs                LinkedList (assume single linkedlist)
+	1.operation 
+		add_at_end             O(1) amortized                           O(n)           
+		add_at_index           O(n) for shift                           O(n) to find position
+		delete_end             O(1) armotized                           O(n) to get to end
+		delete_index           O(n)                                     O(n)
+		access_index           O(1)                                     O(n)
+
+		
+		ArrayList has default capacity and when factor limit is met (say 0.8), the ArrayList 
+		will resize to expand / shrink the capacity(O(n) time to copy original elements). 
+		so add_at_end / delete_end is amortized O(1) in ArrayList
+		
+		
+		ArrayList is a contiguous chunk in memory (data locality)  -> CPU shall read a range of data once in real life
+		LinkedList is discrete in memory and access operation may be slower than ArrayList 
+		When we need to frequently add or delete elements we prefer to using LinkedList
+
+multi-pointer:		
+		隔板题：
+		基本思想： 用两个变量，一个变量记录当前元素位置，一个记录隔板位置
+		性质： 隔板左边是处理好的元素， 当前元素右边是未处理元素， 隔板和当前元素之间的元素是无用元素。
+		每次只要分析当前元素性质是否要加入或者移动隔板即可
+		
+		Q1 given a sorted array, how to de-duplicate
+		{1, 2, 2, 3, 3, 3}  -> {1, 2 ,3}
+		 
+		 1     2     2     3     3     3
+		            slow->
+		                 fast->
+		                 
+		Q2 given a sorted array, how to remove duplicate elements more than 2 (equal 2 is allowed)
+		{1, 2, 2, 3, 3, 3, 3}  -> {1, 2, 2, 3, 3}
+		array[f] compared with array[slow - 2]		
+		1    2    2    3    3    3    3
+		                               f->
+		                    s->
+		                    
+		Q3 remove all elements if it has duplicate
+		
+		
+		
+		Q4 rainbow sort
+		 {1, 0, 1, -1, -1}   ->  {-1, -1, 0, 1, 1}
+		 sol1:
+		 swap cur with lo or hi or skip
+		 1    0    1    -1    -1
+		 lo                    hi
+		    cur->
+		 
+		sol2: counting sort
+		
+		
+		follow up if have several colors   -> divide into small problems using sol1
+		
+Binary Search:
+		Q5 find max number smaller than target (binary search)
+		use classical template
+		
+		
+		Q6 find the min number in a rotated/shifted sorted array
+		2345 6 7891
+		
+		
+		Q7 given an integer array, all the elements duplicate twice except one element, find this element		
+		sol1: xor
+		sol2: set
+		 
+		 
+		 
+		 
+		 
+		 
