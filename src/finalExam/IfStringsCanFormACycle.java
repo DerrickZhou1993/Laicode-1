@@ -2,7 +2,7 @@ package finalExam;
 /**
  * 
  * @author @Yifeng
- * Given an array of Strings, find it all the strings can be chained to form a cycle.
+ * Given an array of Strings, find if all the strings can be chained to form a cycle.
  * Two strings s1 and s2 can be chained, if the last letter of s1 is identical to the 
  * first letter of s2.
  *  For example: "abc" and "cd" can be chained
