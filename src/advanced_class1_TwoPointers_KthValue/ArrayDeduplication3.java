@@ -15,7 +15,7 @@ import java.util.Arrays;
 	The given array is not null
 	Examples
 	
-	{1, 2, 2, 3, 3, 3} → {1}
+	{1, 2, 2, 3, 3, 3} -> {1}
  */
 
 //0  1  2  3  4  5
