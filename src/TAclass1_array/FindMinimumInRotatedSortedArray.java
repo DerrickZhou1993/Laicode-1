@@ -11,6 +11,16 @@ package TAclass1_array;
 	You may assume no duplicate exists in the array.
  */
 
+
+/*
+ *    1234 5 6789    n[start] < n[mid] < n[end]
+ *    
+ *    2345 6 7891    n[start] < n[mid] > n[end]
+ *    
+ *    6789 1 2345    n[start] > n[mid] < n[end]
+ * 
+ */
+
 /*
  * basic idea: binary search
  *  key point: check the numeric relationship between nums[mid], nums[start] and nums[end]
