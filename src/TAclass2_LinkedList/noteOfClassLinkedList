@@ -1,0 +1,97 @@
+LinkedList
+1. size is dynamic
+2. the address of linkedlist node is separate
+
+Time of operation
+	search O(n)
+	insert O(1)
+	delete O(1)
+	
+	tips when facing linkedlist problems
+	1. null check
+	2. dummy node usage
+	
+	
+	
+Q1 reverse a LinkedList
+	sol1. iterative
+		 <- 1   2 ->  3 ->  4
+	prev   cur  next
+	      prev   cur   next
+	    
+	    1). initialize cur = head, next = null, prev = null
+	    2). reverse: cur.next = prev
+	    3). move to next:  cur = next, prev = cur
+	      
+	sol2. recursion
+		base case
+			head == null || head.next == null
+		recursive rule
+			1->2->3->4              --->         1   <- 2->3->4
+			
+Q2 swap ListNode     1->2->3->4->5      --->     2->1->4->3->5
+	Sol1
+		use 4 pointers
+			prev
+			cur
+			next
+			n_next(next.next)
+			
+	Sol2 recursive
+	
+	
+Q3 set n nodes as a pair to reverse a LinkedList
+		1->2->3->4->5->6, n = 3,   ==>    3->2->1->6->5->4
+		sol:
+			0->1->2->3->4->5->6
+		cut into two parts from nth node
+			0-> 1->2->3    4->5->6
+		reverse each part
+			0-> 3->2->1      6->5->4
+			dummy->3->2->1->6->5->4
+			
+			
+Slow and Fast pointer
+
+Q4 delete nth last ListNode from LinkedList
+	1->2->3->4    remove 2nd  ==>  1-> 2-> 4
+	basic idea:
+	1.use fast and slow pointer and make them differ n nodes
+	2.initialize fast and slow and move fast n positions before slow move
+	3.move fast and slow at the same time until fast == null
+	4.delete ListNode which slow is pointing at
+		we can use dummy node for it is possible we delete head node
+		
+Q5 if LinkedList has cycle
+	fast moves two steps each time
+ 	slow moves one step each time
+ 	if slow can meet with fast -> true
+ 		else false
+ 		
+ Q6 how to find the entry to cycle in LinkedList
+  		1->2->3->4->5->3
+  			3 is the entry to cycle
+  		Basic idea:
+  		
+  		
+ Q7 check if a LinkedList is palindrome
+ 	use slow and fast to separate LinekdList into two parts
+ 	reverse second part
+ 	check if each node of two part is equal
+ 	
+ Q8 change the structure of LinkedList
+ 1->2->3->4->5->6     ===>   1->6->2->5->3->4
+ 
+ 1->2->3->4->5        ===>   1->5->2->4->3
+ 
+ 	sol: 1.fast and slow to find the middle node of LinkedList
+ 		 2. first half: normal order
+ 		 	second half: reverse order
+ 		 3. merge two sub part
+			
+		
+		
+Two LinkedLists
+
+Q9 merge two sorted LinkedList	
+			
