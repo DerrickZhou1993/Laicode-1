@@ -43,7 +43,7 @@ public class SwapNodesInPairs {
         return next;       
     }
     
-    // sol2: iteration
+    //sol2: iteration
     /*
      * use 4 pointers
      * 	prev
