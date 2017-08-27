@@ -45,7 +45,9 @@ public class ReverseLinkedList {
 		ListNode cur = head;
 		while (cur != null) {
 			ListNode next = cur.next;
+			// change direction of cur
 			cur.next = prev;
+			// move references
 			prev = cur; // move references prev and cur
 			cur = next; // cur.next is changed, we can only use next pointer here
 		}
