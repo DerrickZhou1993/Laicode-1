@@ -49,7 +49,7 @@ public class ReverseLinkedListInPairs {
 		while (cur != null) {
 			if (counter == 1) {  // cur reaches a pair's last node
 				// record first part head and second part head
-				ListNode h2 = prev.next;
+				ListNode h2 = prev.next; // must use prev.next, we don't know where head is each iteration
 				ListNode t2 = cur.next;
 				
 				// cut linkage
