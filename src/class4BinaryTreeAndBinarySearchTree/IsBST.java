@@ -35,14 +35,6 @@ package class4BinaryTreeAndBinarySearchTree;
  * space: O(height)
  * 			 = O(log_2n) if this tree is balanced
  */
-class TreeNode {
-	public TreeNode left;
-	public TreeNode right;
-	public int key;
-	public TreeNode(int key) {
-		this.key = key;
-	}
-}
 public class IsBST {
 	public boolean isBST(TreeNode root) {
 		if(root == null) {
