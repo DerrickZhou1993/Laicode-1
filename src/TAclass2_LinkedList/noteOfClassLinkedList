@@ -80,7 +80,11 @@ Q5 if LinkedList has cycle
  Q7 check if a LinkedList is palindrome
  	use slow and fast to separate LinekdList into two parts
  	reverse second part
+ 	use if(fast != null) to determine if list's length is odd or even
+ 	for odd case, we move slow = slow.next to make second half smaller
  	check if each node of two part is equal
+ 	when comparing node of each half, always use second half pointer to end the 
+ 	loop for second half maybe shorter when in odd case
  	
  Q8 change the structure of LinkedList
  1->2->3->4->5->6     ===>   1->6->2->5->3->4
