@@ -72,6 +72,9 @@ Q5 if LinkedList has cycle
   		1->2->3->4->5->3
   			3 is the entry to cycle
   		Basic idea:
+  			1. use hasCycle() to find the node whihc fast and slow meet
+  			2. move slow back to head, then start to move fast and slow 
+  			3. when slow and fast meet again, that node is the entry to cycle
   		
   		
  Q7 check if a LinkedList is palindrome
