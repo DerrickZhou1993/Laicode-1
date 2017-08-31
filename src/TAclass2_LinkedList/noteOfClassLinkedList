@@ -116,9 +116,22 @@ sol: reverse, set lower bit to head of list
 7->5->3->1
 6->4->2
 	
+Q11 to determine if two linked lists intersect
+
+basic idea: if two linkd lists are intersecting
+		    their last ListNode must be the same node
+		    
+		    traverse both list to check if they share the last node
+		    Time = O(m + n)
 	
+Q12 If two linked lists intersect, how to find the first node of intersection
+	step1: calculate the length of both linked lists
+	step2: calculate the difference of both lengths, move the longer list by diff steps
+	step3: move both lists until finding the unique list node
 	
-	
+Q13 deep copy linked list with random pointer
+	use hash_map to initialize the mapping between original list and copied list
+	guarantee each node will only be copied once by using hash_map
 	
 	
 	
