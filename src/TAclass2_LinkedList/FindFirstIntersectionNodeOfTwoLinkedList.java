@@ -32,6 +32,22 @@ package TAclass2_LinkedList;
  *  step4: move two lists' head pointer by one step each time until find the node with
  *         same value
  *         if not found, return null
+ *         
+ *  time = O(n + m) where m and n are the length of linked lists
+ *  space = O(1)
+ *  
+ *  follow up:
+ *  	what if we need to find the first intersection node of K linked lists?
+ *      	basic idea: almost the same logic as two linked lists
+ *          step1: calculate the length of k linked lists respectively and find the shortest one
+ *          step2: calculate diff between shortest and other k - 1 lists and move other k - 1 lists
+ *                 by corrsponding diff steps in order to make all the lists' head pointers have the
+ *                 same distance to first intersection node
+ *          step3: move head pointer of each list until find the node which has identical value
+ *                 if not found, return null
+ *           
+ *          time = O(kn) n is the average length of all lists
+ *          space = O(k)
  */
 public class FindFirstIntersectionNodeOfTwoLinkedList {
 	public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
