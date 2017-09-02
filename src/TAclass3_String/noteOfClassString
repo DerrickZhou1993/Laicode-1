@@ -1,0 +1,46 @@
+String
+	String is immutable in Java
+		1. performance
+			but not good for performance when frequently update character in string
+			StringBuilder is mutable  (not thread safe, StringBuffer is thread safe but not recommended)
+			
+			
+Q1 reverse string "I love Yahoo"  ->  "Yahoo love I"
+	step1: reverse whole sentence
+	step2: reverse each word in the sentence
+	
+Q2 abcdef -> efabcd
+	step1: reverse whole string -> fedcba
+	step2: reverse first n characters in string efdcba
+	step3: reverse rest characters ef abcd
+	
+Q3 how to find the character which only occur once in the given string
+	eg. abaccdeff return b
+		sol1: hash_map
+		
+		sol2: one-pass 
+			which data structure can be used for traversing one time 
+			when meet duplicate char, delete it
+			and can also keep the order
+			
+			===> use map + doubly linked list
+			
+Q4 Minimum Window Substring. Given two strings S and T. Find the shortest substring S` in S to
+   make S` contains all the chars occurred in T
+   eg: T = aab
+       S = aaacbc
+       S` = aacb
+       
+       
+Q5 All anagram
+
+
+Q6 sort letters by count
+	aabccc ---> vaaccc
+	
+Q7 strstr
+	sol1: bf
+	sol2: robin karp
+	sol3: KMP
+	
+Q8 Trie (dictionary tree)
