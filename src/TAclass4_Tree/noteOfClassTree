@@ -1,0 +1,40 @@
+T
+Q1 Invert binary tree
+		4
+	   / \
+	  2   7                
+	 / \ / \
+    1  3 6  9
+    
+    ->
+    	4
+	   / \
+	  7   2                
+	 / \ / \
+    9  6 3  1
+    
+Traversal of Tree
+	1. preorder
+		iteration:
+			step1: new a Stack, stack.push(root)
+			step2: pop top and print, then push root.right and root.left (for we need to pop root.left before root.right)
+			step3: do it until stack is empty
+	2. inorder
+		iteration:
+			step1: new a Stack, initialize cur pointing to root
+			step2: as long as cur.left exists, keep pushing left child
+			step3£º if no left child exists, let cur point to right child
+			step4: keep iterating until cur == null && stack is empty
+	3. postorder
+		sol1: use two stacks
+		
+		
+		
+		
+		sol2: use one stack
+			
+    	
+    	
+    	
+Level order traversal
+	use a queue
