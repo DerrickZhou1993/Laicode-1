@@ -21,18 +21,25 @@ public class BalancedBinaryTree {
 		return res != -1;
 	}
 	
+	/*
+	 * use -1 as a flag to represent the current tree is not balanced
+	 */
 	private int getHeight(TreeNode root) {
+		// base case
 		if (root == null) {
-			return 0;
+			return 0; 
 		}
+		// step1: get something from child node
 		int left = getHeight(root.left);
 		int right = getHeight(root.right);
-		if (left == -1 || right == -1) {
+		// step2: current layer process
+		if (left == -1 || right == -1) {  // if one of subtree is not balanced, return -1
 			return -1;
 		}
-		if (Math.abs(left - right) > 1) {
+		if (Math.abs(left - right) > 1) { // if difference of left and right > 1, current tree is not balanced
 			return -1;
 		}
+		// step3: return something to parent node
 		return Math.max(left, right) + 1;
 	}
 	
