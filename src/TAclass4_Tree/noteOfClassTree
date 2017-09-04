@@ -23,16 +23,32 @@ Traversal of Tree
 		iteration:
 			step1: new a Stack, initialize cur pointing to root
 			step2: as long as cur.left exists, keep pushing left child
-			step3£º if no left child exists, let cur point to right child
-			step4: keep iterating until cur == null && stack is empty
+			step3: if no left child exists, let cur point to right child
+			step4: keep iterating until cur == null || stack is empty
 	3. postorder
 		sol1: use two stacks
+			step1: initialize two stacks(stack1 and stack2), push root into stack1
+			step2: pop TreeNode from stack1 and push it into stack2 then push its left and right child into stack1(reverse pushing order of preorder)
+			step3: iterate the process until stack1 is empty
+		this basic idea is if we push child of root into stack in the reverse order we do it in preorder and then we reverse the whole 
+		res(stack2.pop()), we could get postorder traversal of binary tree
 		
-		
-		
+		TreeNodes pop from stack2 will build the postorder traversal of binary tree
 		
 		sol2: use one stack
-			
+
+		 * the essence of post order of BST by iteration is the direction
+		 * are we going down or going up from left subtree or going up from right subtree?
+		 * maintain a previous Node which is the last traversed node in last iteration, to 
+		 * record the previous visiting node in the traversing path, so that we know what the 
+		 * direction we are taking now and what is the direction we are taking next
+		 * 
+		 * steps: stack.offer(root)
+		 * 		  if prev is null(cur is root)  -> going down(left tree has priority)
+		 * 		  if prev is current's parent -> going down(left tree has priority)
+		 * 		  if prev is current's left  -> left subtree finished, going current.right if existed,if not existed,pop current and going up
+		 * 	      if prev is current's right -> right subtree finished, pop current, going up
+
     	
     	
     	
