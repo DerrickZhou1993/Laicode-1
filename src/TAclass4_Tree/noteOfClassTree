@@ -1,4 +1,4 @@
-T
+Tree
 Q1 Invert binary tree
 		4
 	   / \
@@ -53,4 +53,42 @@ Traversal of Tree
     	
     	
 Level order traversal
-	use a queue
+	Level order: queue
+	
+	zigzag level traversal
+	
+	
+Determine a tree
+
+	Q1 determine if a binary tree is a balanced binary tree
+		step1: bottom-up search, record current treenode depth
+		step2: determine if it breaks the rule of balanced binary tree (difference of depth > 1)
+		step3: return the height to the parent node, if not balanced, return -1
+		
+	Q2 isBST
+		sol:
+			step1: maintain current node's valid range (min and max)
+			step2: if the current node's value is out of valid range, return false
+				   else current node's value will be passed as max limit to left child
+				        current node's value will be passed as min limit to right child
+			recursively call the function
+	
+	Q3 complete binary tree
+	      1
+	     / \
+	    2   3
+	   / \   \
+	  4  5    7
+	  
+	  basic idea: use level order traversal 
+	  	whenever we traverse a treenode
+	  		determine if it is a full node (has both left and right child node)
+	  	    	if current node is not full, then all the following nodes traversed must be leaf nodes, else return false
+	  	    	(if one node has no left child, then it cannot have right child node either, else return false)
+	  
+	  
+	  
+ 	
+	
+	
+	
