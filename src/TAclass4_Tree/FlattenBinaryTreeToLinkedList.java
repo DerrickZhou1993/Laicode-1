@@ -32,12 +32,18 @@ import java.util.List;
 	            \
 	             6
  */
-class Solution {
+public class FlattenBinaryTreeToLinkedList {
 	/*
 	 * elegant recursion
 	 */
+	private TreeNode prev = null;
 	public void flatten(TreeNode root) {
-		
+		// base case
+		if (root == null) {
+			return;
+		}
+		flatten(root.right);
+		flatten(root.left);
 	}
 	
 	
