@@ -50,7 +50,7 @@ public class FlattenBinaryTreeToLinkedList {
 	}
 	
 	/*
-	 * intuitive thinking use pre-order traversal of bianry tree
+	 * intuitive thinking use pre-order traversal of binary tree
 	 * which is not concise and elegant enough
 	 * time = O(n)
 	 * space = O(n)
