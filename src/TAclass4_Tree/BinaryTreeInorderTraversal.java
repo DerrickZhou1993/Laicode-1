@@ -27,6 +27,16 @@ import java.util.LinkedList;
 			step4: keep iterating until cur == null || stack is empty
  */
 /*
+ * 		4
+	   / \
+	  2   7                
+	 / \ / \
+    1  3 6  9
+    
+ stack ||   empty
+       cur  null
+       res  1 2 3 4 6 7 9
+    
  * time = O(n)
  * space = O(n)
  */
