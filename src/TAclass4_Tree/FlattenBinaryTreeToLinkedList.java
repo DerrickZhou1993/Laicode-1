@@ -44,12 +44,10 @@ public class FlattenBinaryTreeToLinkedList {
 		}
 		flatten(root.right);
 		flatten(root.left);
+		root.left = null;
+		root.right = prev;
+		prev = root;
 	}
-	
-	
-	
-	
-	
 	
 	/*
 	 * intuitive thinking use pre-order traversal of bianry tree
