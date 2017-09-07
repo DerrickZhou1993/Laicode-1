@@ -51,6 +51,10 @@ import java.util.Map;
 							if (map.get(leftmost) > 0) meaning current left character has not been matched 
 						}
 						left++ // no matter current left is in map or not, we move left to try to shorten the window
+						
+	
+	Time = O(n);
+	Space = O(len of t);
 					
 	
  */
