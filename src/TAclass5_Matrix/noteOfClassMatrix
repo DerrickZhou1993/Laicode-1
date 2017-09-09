@@ -1,0 +1,104 @@
+Matrix
+warm up:	Spiral Print
+		spiral print m*n matrix
+		1    2    3
+		4    5    6
+		7    8    9        to    1 2 3 6 9 8 7 4 5
+		
+		basic idea: from [0][0] -> [1][1] -> ...
+		and the size change of line should also be considered
+		
+
+Zigzag print
+1 2 3
+4 5 6
+7 8 9  to 1 2 3 6 5 4 7 8 9
+
+
+Q2 Suppose every pixel of an image is stored in a n*n matrix, how to right rotate the image
+   by 90 degrees
+   
+   1 2 3 
+   4 5 6
+   7 8 9
+   
+   to 
+   
+   7 4 1
+   8 5 2
+   9 6 3
+   
+   sol1: iterative:
+   		step1: rotate by pivot 159, the matrix becomes:	1 4 7
+                                                        2 5 8
+                                                        3 6 9
+                                                        
+       	step2: swap element between pivot 456 
+                                    the matrix becomes:
+                                                        7 4 1
+                                                        8 5 2
+                                                        9 6 3
+		
+		
+Q3 for a m*n matrix, if an element is 0, then change all the elements which are on the same column and row
+   with this element to 0;
+   
+   eg:
+   	7 4 1
+   	8 0 2
+   	0 6 3
+   	
+   	to
+   	
+   	0 0 1
+   	0 0 0
+   	0 0 0 	
+   	
+Q4 find target in young tableau 
+	1 6 9
+	2 8 10
+	5 9 12
+	
+	each row and element is sorted but not guarantee the last element of row i is smaller than first element of i + 1
+	
+	pay attention to top-right element
+	
+	we can treat this matrix as a tree and treat top-right element as root
+	
+                                         9
+                                        / \
+                                       6   10
+                                      / \    \
+                                     1  8     12 
+                                      \  \
+                                      2   9
+                                       \
+                                        5        
+                                               
+                                     and this tree is similar to a BST
+
+
+
+Q5 search kth smallest element from young tableau
+1 6 9
+2 8 10
+5 9 12
+
+	k = 4
+	min-heap to store the element and its coordinate in matrix
+	so we need to define a class for element to hold coordinate and value (class Cell)
+
+Q6 find the length of max increasing path in a matrix
+1 6 9
+2 4 10
+5 7 3
+
+path: 
+	
+	basic idea: we do not know where the path begins, so we need to traverse every node of matrix
+				and for each node in the matrix we need to check four directions of it
+				so this is a dfs process and time complexity is O(4^n) n is total number of nodes of matrix
+				
+				consider prune (middle memory) in dfs 
+				
+Q7 Boogle game
