@@ -26,6 +26,8 @@ Space = O(n)
 3.2 subsets with duplicate 
 	basic idea: sort the given array
 				use subset 1
+Time = O(2 ^ n)
+Space = O(n)
 				
 				
 4 All permutation
