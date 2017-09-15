@@ -62,4 +62,34 @@ Space = O(n)
 		6   4
 	   / \ 
 	  1   11 
- 7 directed graph  
+ 7 directed graph 
+ 
+ clone graph 
+ 	use hash_map t0 map original graph with cloned graph
+ 	and use dfs to traverse all the nodes of original graph
+ 	during dfs traverse, map original nodes with cloned ones,
+ 	if hash_map has visited before, do nothing
+ 	when traverse new node, add it to cloned one's neighbors
+ 
+ 
+ Strongly Connected Component
+  initialize an empty stack and run dfs. whenever we finish traversing all the neighbors of current node, 
+  push it into the stack
+  then reverse the edge and run dfs again on stack, this would tell us the number of SCC
+  
+  the reason is althrough we reverse edges of original graph, SCC still SCC, we actually check the edges twice
+ 
+ 
+ 
+ 
+ topological sort    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
