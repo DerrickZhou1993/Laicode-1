@@ -9,11 +9,83 @@ advantage of iterator
 	The actual traversal algorithm should be decoupled
 	Implementation detail should be specific to different kinds of collections
 	The way we access to it should be general
+
+	 
+Class Iterator
+	The iterator pattern is a designed pattern in which an iterator is used to traverse a container
+	and access the container's elements. The iterator pattern decouples algorithms from containers.
 	
+	Provide a way to access the elements of an aggregate object sequentially without exposing its
+	underlying representation
+	
+	when use iterator, we cannot easily change original data by iterator. This could protect the 
+	data(security reason)       But we could remove element by iterator in Java
+	
+	Each layer could do some change to iterator and only expose the iterator to outside,
+	this is also an aspect to hidden details
+	
+	
+		
 	// basic implementation of Iterator Interface
 	Interface Iterator {
 		public boolean hasNext();
 		public E next();
 	}
 	
+	
 Array Iterator
+
+Array Iterator only returns odd number
+
+Tips for examining iterator
+1. call next() continuously if(!hasNext()) do something
+2. call hasNext() continuously
+3. hasNext() and next() order
+
+
+Iterate array by given iterator of array
+aka	iterator of iterator
+
+public class ArrayIterator {
+	 // member field
+	 private Iterator it;  // given iterator of array 
+	 private Integer next;
+	 
+	 // constructor
+	 public ArrayIterator(Iterator it) {
+		 this.is = it;
+	 }
+	 
+	 /*
+	  * remember hasNext() cannot move cursor at any case
+	  * so we use next != null to pre-examine if Iterator hasNext()
+	  * and only when it.next i.e next number in array is odd
+	  * can we have right to update next of Iterator field
+	  */
+	 public boolean hasNext() {
+		 if (next != null) {    // to handle call hasNext() continuously
+		 	return true;
+		 } 
+		 
+		 while (it.hasNext()) {
+		 	Integer tmp = it.next(); // next number in the array
+		 	if (tmp % 2 == 1) {  // if next number in the array is odd
+		 		next = tmp;      // update field next for next() use
+		 		return true;
+		 	}
+		 }
+		 return false;
+	 }
+	 
+	 public Integer next() {
+		 if (!hasNext()) {   // handle call next() continuously case
+		 	throw new NoSuchElementException();
+		 }
+		 Integer res = next;
+		 next = null; // reset next to null because hasNext() will handle call hasNext() continuously by examining next's value
+		 return res;
+	 }
+}
+
+
+EvenIterator: when next() is called, go for two steps instead of one
