@@ -1,0 +1,19 @@
+Iterator
+example:
+	Iterator it = Collection.iterator();
+	it.hasNext()
+	it.next()
+
+advantage of iterator
+	need a way of abstracting the traverse operation on any kind of collections.
+	The actual traversal algorithm should be decoupled
+	Implementation detail should be specific to different kinds of collections
+	The way we access to it should be general
+	
+	// basic implementation of Iterator Interface
+	Interface Iterator {
+		public boolean hasNext();
+		public E next();
+	}
+	
+Array Iterator
