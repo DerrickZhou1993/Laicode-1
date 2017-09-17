@@ -5,21 +5,25 @@ package TAclass8_DP;
  * given an array, find the max sum without choosing any continuous two numbers
  * [1, 2, 3, 4, 5]  ---> 9
  * 
+ */
+
+/*
+ * Time = O(n)
+ * Space = O(n)
  * M[i] represents from 0th to ith the max sum we can have
  * 
  * base case:
  * 		M[0] = array[0], M[1] = max(array[0], array[1])
  * 
  * induction rule:
- * 		M[i - 1] (not choose array[i])
+ *		M[i] = 
+ *	max(
+ * 		M[i - 1] (not choose array[i]),
  * 		M[i - 2] + array[i] (choose array[i])
+ *      )
  * 
  * assumption: the array only contains positive integers
- */
-
-/*
- * Time = O(n)
- * Space = O(n)
+ * 
  * 
  * follow up1: how to only use O(1) space?
  */
