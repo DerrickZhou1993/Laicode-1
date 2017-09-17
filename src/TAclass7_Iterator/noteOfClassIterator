@@ -89,3 +89,38 @@ public class ArrayIterator {
 
 
 EvenIterator: when next() is called, go for two steps instead of one
+
+public class TwoStepIterator {
+	 // member field
+	 private Iterator it;  // given iterator of array 
+	 private Integer next;
+	 
+	 // constructor
+	 public TwoStepIterator(Iterator it) {
+		 this.is = it;
+	 }
+	 
+	 public boolean hasNext() {
+		 if (next != null) {    // to handle call hasNext() continuously
+		 	return true;
+		 }
+		 Integer tmp = null;
+		 for (int i = 0; i < 2; i++) {
+		 	if (!it.hasNext()) {
+		 		return false;
+		 	}
+		 	temp = it.next(); // get the number of next two-step if it exists
+		 }
+		 next = temp; // update next value with temp
+		 return true;
+	 }
+	 
+	 public Integer next() {
+		 if (!hasNext()) {
+		 	throw new NoSuchElementException();
+		 }
+		 Integer res = next;
+		 next = null;
+		 return res;
+	 }
+}
