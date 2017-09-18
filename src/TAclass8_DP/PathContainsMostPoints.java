@@ -57,7 +57,7 @@ public class PathContainsMostPoints {
 		dp[0] = 1;
 		for (int i = 1; i < array.length; i++) {
 			for (int j = 0; j < i; j++) {
-				if (array[j] < array[i]) {
+				if (array[j] <= array[i]) {
 					dp[i] = Math.max(dp[j] + 1, dp[i]);
 				}
 			}
