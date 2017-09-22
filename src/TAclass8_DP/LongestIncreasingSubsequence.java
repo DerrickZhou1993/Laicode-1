@@ -17,7 +17,7 @@ import java.util.Arrays;
 	Follow up: Could you improve it to O(n log n) time complexity?
  */
 /*
- *  dp[i] represents length of longest increasing sequence from 0th to ith (including ith eleement)
+ *  dp[i] represents length of longest increasing sequence from 0th to ith (including ith element)
  *  
  *  induction rule
  *  		dp[i] = Math.max(dp[j] + 1, dp[i]) if nums[j] < nums[i] where 0 <= j <= i
