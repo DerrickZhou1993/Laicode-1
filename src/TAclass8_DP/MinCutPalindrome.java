@@ -20,7 +20,7 @@ package TAclass8_DP;
  *                                 memory
  *          Demo for example string "ababb"
  *          M[i] represents minimum number of cuts from 0th character to i-th character (exclusive)  [0, i - 1] of string 
- *          
+ *          if we need to look back all the characters (whole substring), we need to exclude last position
  *          
  *          case 4: abab  |              b
  *                  M[4]     right smaller section       for b is valid palindrome, so M[5] = Math.min(M[4] + 1, M[5])
@@ -38,7 +38,8 @@ package TAclass8_DP;
  *           
  *           and what we need is M[5]
  *           
- *           this solution needs O(n ^ 3) time and O(n ^ 2) space
+ *           this solution needs O(n ^ 2) time and O(n ^ 2) space
+ *           for we have cached if substring is palindrome from boolean[][] matrix
  */
 public class MinCutPalindrome {
     public int minCut(String s) {
@@ -50,20 +51,25 @@ public class MinCutPalindrome {
 		dp[0] = 0;
         boolean[][] pal = getPalindrome(s);  // cache palindrome substring in memory
 		for (int i = 1; i < dp.length; i++) {
-			dp[i] = i;
+			dp[i] = i;  // at most cut i times to initialize dp[i]
+			if (pal[0][i - 1]) {  // prune if [0, i] substring is already a palindrome
+				dp[i] = 0;
+				continue;
+			}
 			for (int j = 0; j < i; j++) {
-				if (pal[0][i - 1]) {  // prune if [0, i] substring is already a palindrome
-					dp[i] = 0;
-					continue;
-				}
 				if (pal[j][i - 1]) {    // [j, i-1] is right smaller section
 					dp[i] = Math.min(dp[j] + 1, dp[i]);  // we can directly get dp[j] from memory
+					                                     // dp[j] is left bigger section
 				}
 			}
 		}
 		return dp[s.length()];
 	}
-	
+	/*
+	 * classical boolean[][] matrix to determine j-th to ith substring [j, i] 
+	 * is palindrome or not. 
+	 * this matrix could make problem tiem complexity to O(n ^ 2)
+	 */
 	private boolean[][] getPalindrome(String s) {
         // res[i][j] represents if substring from jth to ith (inclusive)
         // is a palindrome or not
