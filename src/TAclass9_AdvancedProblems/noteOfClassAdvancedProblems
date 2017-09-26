@@ -1,0 +1,53 @@
+Heap:
+	java: PriorityQueue
+	Heap is represented by array usually in memory
+	Be careful of comparator of heap
+	
+Heapify:
+	convert an unordered integer array into a heap array
+	for a element in heap which index is x:
+		left_child index: 2 * x + 1
+		right_child index: 2 * x + 2
+		parent: x - 1 / 2
+		
+percolate down:
+
+
+bottom-up percolate down to heapify is a better way than top-down O(n)
+top-down heapify may result in an element is not extreme one but fixed 
+on the top of heap and cannot go down forever
+
+
+heap-sort:
+		1. heapify the array ==> heap array
+		2. for loop:
+				swap top element to tail of array 
+		        percolate down second last element
+		   this result in an sorted array
+		   
+		   
+Heap Operation Cost:
+	peek():      O(1)
+	offer(E e):  O(logn)  
+	poll():      O(logn)  actually swap top will tail and pecolate down ==> logn
+	remove(E e): O(n)    find e will cost O(n)  => O(N)
+	
+	
+Median Tracker
+	void addNum(Integer i)
+	double findMedian()
+	
+BFS2
+	Given two ascending arrays, define pair(u, v), it represents choosing an element u from arr1
+	and choosing another element v from arr2, and given a number K, find k min sum pairs
+	
+Top-K
+4. Given a non-empty array of integers, return the k most frequent elements
+	minHeap of K size ---> online streaming 
+	
+BFS
+
+Word Ladder
+
+topological sort
+	
