@@ -4,13 +4,60 @@ Heap:
 	Be careful of comparator of heap
 	
 Heapify:
-	convert an unordered integer array into a heap array
+	convert an unordered integer array into a heap array O(n) time
 	for a element in heap which index is x:
 		left_child index: 2 * x + 1
 		right_child index: 2 * x + 2
 		parent: x - 1 / 2
 		
-percolate down:
+	how heapify()?:
+				for each node that has at least one child, we perform percolateDown() action,
+				in the order of from the nodes on the deepest level to the root
+				time: O(n)
+				
+				       10
+				    /     \
+				  11       7
+				 /   \    /  \    
+		         2    8    4  6
+		        / \
+		       13  3
+		       
+		           percolateDown(2)
+		           percolateDown(7)
+		           percolateDown(11)
+		           percolateDown(10)
+		           
+		               2
+				    /     \
+				  3         4
+				 /   \    /  \    
+		         10    8   7  6
+		        / \
+		       13  11
+		       
+		  Essentially:
+		  	the range of indices need to perform percolateDown() is [0, n / 2 - 1]
+		  	for last element's parent's index:  ((n - 1) - 1) / 2 = (n - 2) / 2 = n / 2 - 1
+		           
+percolate up:(offer(E e))
+	when:
+		 the element needs to be moved up to maintain the heap's property, for example
+		 when offering a new element into the heap
+	how: 
+		compare the element with its parent, move it up when necessary. Do this until the
+		element does not need to be moved
+		
+	
+		
+percolate down: (poll())
+	when:
+		the elements need to be moved down to maintain the heap's property, for
+		example, when poll the root element from the heap
+	how:
+		compare the element with its two children, if the smallest one of the two
+		children is smaller than the element, swap the element with that child. Do this
+		until the element does not need to be moved.
 
 
 bottom-up percolate down to heapify is a better way than top-down O(n)
