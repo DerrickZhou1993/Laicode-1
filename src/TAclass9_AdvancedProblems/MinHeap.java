@@ -201,6 +201,9 @@ public class MinHeap {
 	 * @return original element of heap
 	 */
 	public int update (int index, int element) {
+		if (index < 0 || index > size - 1) {
+			throw new ArrayIndexOutOfBoundsException("index cannot be out of array bound");
+		}
 		int res = array[index]; // orignal element is the result to return
 		/*
 		 * maintain heap property by percolateDown or percolateUp
