@@ -14,7 +14,12 @@ import java.util.PriorityQueue;
 /*
  * basic idea: use class Element to represent node in arrays with their x coordinate, y coordinate
  * and its value
- * use PriorityQueue to guarantee ascending order
+ * use PriorityQueue with size K to guarantee ascending order
+ * there are k * n elements in the arrays (each array assume contains n elements and there are k arrays in total)
+ * and poll() and offer() time is O(logk)
+ * so:
+ * 	Time = O(n * k * log(k))
+ *  space = O(k * n)
  */
 public class MergeKSortedArrays {
 	class Element implements Comparable<Element>{
