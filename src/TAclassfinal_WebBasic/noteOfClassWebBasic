@@ -1,0 +1,140 @@
+Basic Knowledge of Computer and Web
+Computer
+	1. Binary
+		1.1 How to represent negative in binary
+				two's complement: 
+						0001            (+1)   取反加一
+						1110 + 1 = 1111 (-1)
+					the advantage is 0001(1) + 1111(-1) = 1 0000 = 0 (1 is sign bit so ignore it)
+					so there is only addition in CPU arithmetic unit (addition rule also works for subtraction)
+					
+		1.2 How to represent non-integer
+		    2.2(2 = 10 in binary) = 10.00110011001100110011...
+			十进制小数转二进制小数方法：
+			十进制小数→→→→→二进制小数 方法：“乘2取整”
+			
+			对十进制小数乘2得到的整数部分和小数部分,整数部分既是相应的二进制数码,再用2乘小数部分(之前乘后得到新的小数部分),又得到整数和小数部分.
+			如此不断重复,直到小数部分为0或达到精度要求为止.第一次所得到为最高位,最后一次得到为最低位
+			如:0.25的二进制
+			0.25*2=0.5 取整是0
+			0.5*2=1.0    取整是1
+			即0.25的二进制为 0.01 ( 第一次所得到为最高位,最后一次得到为最低位)
+			
+			0.8125的二进制
+			
+			0.8125*2=1.625   取整是1
+			
+			0.625*2=1.25     取整是1
+			
+			0.25*2=0.5       取整是0
+			
+			0.5*2=1.0        取整是1
+			
+			即0.8125的二进制是0.1101（第一次所得到为最高位,最后一次得到为最低位）
+			
+			十进制小数→→→→→八进制小数 方法：“乘8取整” 
+			
+			0.71875）10 =（0.56）8
+			
+			 
+			
+			0.71875*8=5.75 取整5
+			
+			0.75*8=6.0      取整6
+			即0.56
+			
+			十进制小数→→→→→十六进制小数方法：“乘16取整”例如： 
+			
+			(0.142578125)10=(0.248)16
+			
+			0.142578125*16=2.28125 取整2
+			
+			0.28125*16=4.5          取整4
+			
+			0.5*16=8.0              取整8
+			
+			即0.248
+			
+		
+			For a binary number
+			the format of this number is:
+				SIGN |      EXPONENT      |    FRACTION
+				(1bit)       (11bit)          52(bit)
+				64 bits in total
+				
+		binary to decimal 
+			fraction: 0 * 2^(-1) + 0 * 2^(-2) + 1 * 2^(-3) ....
+			
+		1.3 二进制        八进制        十进制         十六进制
+		    1bit          3bit         special       4bit
+		    
+		   this design represents that a binary number can separate into n * 4bit to quickly decode to hexadecimal
+		   
+		   
+		1.4 How to represent a character
+			ASCII    ==> radically it is a map
+			 7-bit can represent all the symbols in ASCII (0~127)
+			 1 byte is enough (1 byte = 8 bits)
+			 
+		1.5 how to represent Chinese 
+		unicode
+			use a bit to store the length of info
+		UTF-8	
+		
+		1st Byte             2nd Byte          3rd Byte        4th Byte          Number of Free Bits
+		0xxxxxxx                                                                 7
+		110xxxxx             10xxxxxx                                            5 + 6 = 11
+		1110xxxx             10xxxxxx          10xxxxxx                          4 + 6 + 6 = 16
+		11110xxx             10xxxxxx          10xxxxxx        10xxxxxx          3 + 6 + 6 + 6 = 21
+		
+		x represents real info, 1110 means this info is stored in 3 bytes
+		'10' as initial is to make sure the info is in right format
+		   
+		example: decode byte[] to List<Integer> by UTF-8
+		
+		1.6 could 1G memory hold 1 million URL?
+			Assume: average length of URL is 400 Byte (can ask to interviewer)
+			400 b * 1 M = 400 Mb < 1GB 
+			
+	2. Computer Basic
+		2.1 Computer Architecture
+							  arithmetic unit 
+						      L1
+						      L2
+						      Memory
+						      Disk
+						      Web/Cloud
+						      
+	    2.2 Google "The numbers every engineer should know"
+	    
+	    
+	    2.3 Runtime = Computing Time(occur in cpu which is fast ) + Data Movement Time(pipeline or big data in distributed system which cost > computing time)
+	    
+	    2.4 Radically, the meaning of cache is to store the data which we need in the place where close to us.
+	    	Cache Algorithm:
+	    				LRU (least recently used)
+	    				LFU (least frequently used)
+	    
+	    2.5 Virtual Memory
+	    		The problem which the virtual memory tries to solve is lack of memory
+	    		Program A is using some part of memory and other programs cannot use this part of memory    (single user and single task)
+	    		
+	    		
+	    2.6 CPU Scheduling  
+	    	similar to virtual memory
+	    	one user multiple tasks:
+	    			run program A ===> move it to disk
+	    										run program B ===> move it to disk
+	    												continue run program ===> move it to disk
+	    												
+	    			the process switch too fast that human cannot figure out the halt and it seems like 
+	    			all the programs are running simultaneously.
+	    		
+	    		
+		   
+		   
+	
+		     
+
+			
+					
