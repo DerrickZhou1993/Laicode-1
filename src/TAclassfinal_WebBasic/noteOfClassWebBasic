@@ -119,22 +119,198 @@ Computer
 	    		The problem which the virtual memory tries to solve is lack of memory
 	    		Program A is using some part of memory and other programs cannot use this part of memory    (single user and single task)
 	    		
-	    		
-	    2.6 CPU Scheduling  
-	    	similar to virtual memory
-	    	one user multiple tasks:
+	    		one user multiple tasks:
 	    			run program A ===> move it to disk
 	    										run program B ===> move it to disk
-	    												continue run program ===> move it to disk
+	    												        continue run program A ===> move it to disk
 	    												
 	    			the process switch too fast that human cannot figure out the halt and it seems like 
 	    			all the programs are running simultaneously.
+	    			
+	    			Memory is separated to several blocks, and each block is called page.  
 	    		
 	    		
-		   
-		   
-	
-		     
-
+	    2.6 CPU Scheduling  
+	    	similar to virtual memory
+	    	
+	    	非抢占式 - non-preemption
+	    	分配cpu后， 进程一直运行到完成或异常终止
+	    		简单，系统开销小
+	    		批处理系统 9
+	    		
+	    	抢占式  - preemption
+	    	系统根据某种策略(抢占原则)收回正在运行进程的cpu， 调度其他就绪进程运行
+	    		及时响应各进程需求
+	    		分时/实时系统
+	    		
+	    	时间片原则（时间片用完）timeslice
+	    	优先级原则（更高优先级进程就绪）
+	    	短进程优先原则（更短进程就绪）
+	    	
+	3 Web Basic
+		7-layer structure
+		
+		3.1 TCP/IP Basic:
+				1. TCP/IP is a communication protocol for the Internet
+					The communication protocol is a description of the rules that the computer must adhere to, 
+					and only those rules can be followed to communicate between the computers.
+						TCP:
+							TCP is used for data transfer control from the application to the network.
+							TCP is responsible for dividing the data packets into IP packets before they are transferred, and then reassembling them when they arrive.
+						
+						IP - Internet Protocol
+							IP is responsible for communication between computers.
+							IP is responsible for sending and receiving packets on the Internet.
+										
+				2. Both the browser and the server are using TCP / IP
+					Internet browsers and Internet servers use TCP / IP to connect to the Internet. 
+					The browser uses TCP / IP to access the Internet server, and the server uses TCP / IP to return HTML to the browser.
+					
+	     	3.1.2 What is TCP / IP?
+					1. TCP / IP is a communication protocol that for a  computer connected to the Internet to do the communication.
+					2. TCP / IP means Transmission Control Protocol / Internet Protocol ( Transmission Control Protocol / the Internet Protocol).
+					3. TCP / IP defines the standard for how electronic devices (such as computers) are connected to the Internet and how data is transferred between them.
+					
+					
+		 	3.1.3 Within TCP / IP
+				In TCP / IP contains a series of protocols for handling data communication:
+					TCP (Transmission Control Protocol) - communication between applications
+					UDP (User Packet Protocol) - Simple communication between applications
+					IP (Internet Protocol) - communication between computers
+					ICMP (Internet Message Control Protocol) - for errors and states
+					DHCP (Dynamic Host Configuration Protocol) - for dynamic addressing
 			
+		 	3.1.4 TCP uses a fixed connection (TCP content)
+					TCP is used for communication between applications.
+					When the application wants to communicate with another application via TCP, it sends a communication request. 
+						This request must be sent to an exact address. After both parties "handshake", TCP will establish a full-duplex communication between the two applications.
+					This full-duplex communication will occupy the communication lines between the two computers until it is closed by one or both.
+					UDP and TCP are very similar, but more simple, while the reliability is lower than TCP.
+					
+		 	3.1.5 IP is connectionless
+					IP is used for communication between computers.
+					IP is a connectionless communication protocol. It does not occupy the communication lines between the two computers that are communicating. In this way, 
+						IP reduces the need for network lines. Each line can simultaneously meet the communication needs of many different computers.
+					Through IP, messages (or other data) are divided into small independent packages, and transmitted over the Internet between computers.
+					IP is responsible for routing each packet to its destination.
+					
+		 	3.1.6 IP router
+					When an IP packet is sent from a computer, it will reach an IP router.
+					The IP router is responsible for routing the packet to its destination, either directly or through another router.
+					In a single communication, the path through which a packet passes may be different from the other packets. And the router is responsible for correct addressing based on traffic, 
+						errors in the network, or other parameters.
+	
+		    3.1.7 TCP / IP
+					TCP / IP means that TCP and IP work together.
+					TCP is responsible for communication between application software (such as your browser) and network software.
+					IP is responsible for communication between computers.
+					TCP is responsible for segmenting data and loading IP packets, and then reassembling them as they arrive.
+					IP is responsible for sending the packet to the recipient.
+				
+		3.2 TCP / IP Addressing 
+			TCP / IP uses 32 bits(4 bytes) or 4 numbers, each between 0 and 255 to address the computer.
+			
+			3.2.1 IP address
+				Each computer must have an IP address to connect to the Internet.
+				Each IP packet must have an address to be sent to another computer.
+				
+			3.2.2 The IP address contains 4 digits:
+				TCP / IP uses 4 digits to address the computer. Each computer must have a unique 4-digit address.
+				The numbers are between 0 and 255 and are separated by a dot, like this: 192.168.1.60
+					1 byte = 8 bit  and 8 bit can represent 256 values in binary (000000 - 111111)
+					and there are four bits (0.0.0.0 to 255.255.255.255) so 32 bits in total
+					
+			3.2.3 Domain Name
+				12 Arabic numerals are hard to remember. It's easier to use a name.
+				The name used for the TCP / IP address is called the domain name. google.com is a domain name.
+				When you type a domain like http://www.google.com, the domain name will be translated into a number by a DNS program.
+				In the world, a large number of DNS servers are connected to the Internet. The DNS server is responsible for translating the domain name into a TCP / IP address 
+					and is responsible for updating the system with the new domain name information.
+				When a new domain name is registered with its TCP / IP address, the DNS server worldwide will update this information.
+				
+		
+	    	 
+	 	3.3 TCP (Transmission Control Protocol)  3-way handshake and 4-way handshake
+	        TCP的特性:
+				TCP提供一种面向连接的、可靠的字节流服务 (byte stream)
+				在一个TCP连接中，仅有两方进行彼此通信。广播和多播不能用于TCP
+				TCP使用校验和，确认和重传机制来保证可靠传输
+				TCP给数据分节进行排序，并使用累积确认保证数据的顺序不变和非重复
+				TCP使用滑动窗口机制来实现流量控制，通过动态改变窗口的大小进行拥塞控制
+				注意：TCP 并不能保证数据一定会被对方接收到，因为这是不可能的。TCP 能够做到的是，如果有可能，就把数据递送到接收方，否则就（通过放弃重传并且中断连接这一手段）通知用户。因此准确说 TCP 也不是 100% 可靠的协议，
+				它所能提供的是数据的可靠递送或故障的可靠通知。
+				
+			三次握手与四次挥手
+				
+			所谓三次握手(Three-way Handshake)，是指建立一个 TCP 连接时，需要客户端和服务器总共发送3个包。
+				
+				三次握手的目的是连接服务器指定端口，建立 TCP 连接，并同步连接双方的序列号和确认号，交换 TCP 窗口大小信息。在 socket 编程中，客户端执行 connect() 时。将触发三次握手。
+				
+				第一次握手(SYN=1, seq=x):    SYN: Synchronization     Client Sequence Number: x
+				
+				客户端发送一个 TCP 的 SYN 标志位置1的包，指明客户端打算连接的服务器的端口，以及初始序号 X,保存在包头的序列号(Sequence Number)字段里。
+				
+				发送完毕后，客户端进入 SYN_SEND 状态。
+				
+				第二次握手(SYN=1, ACK=1, seq=y, ACKnum=x+1):  ACK: Acknowledge    Sever Sequence Number: y
+				
+				服务器发回确认包(ACK)应答。即 SYN 标志位和 ACK 标志位均为1。服务器端选择自己 ISN 序列号，放到 Seq 域里，同时将确认序号(Acknowledgement Number)设置为客户的 ISN 加1，即X+1。 发送完毕后，服务器端进入 SYN_RCVD 状态。
+				
+				第三次握手(ACK=1，ACKnum=y+1)
+				
+				客户端再次发送确认包(ACK)，SYN 标志位为0，ACK 标志位为1，并且把服务器发来 ACK 的序号字段+1，放在确定字段中发送给对方，并且在数据段放写ISN的+1
+				
+				发送完毕后，客户端进入 ESTABLISHED 状态，当服务器端接收到这个包时，也进入 ESTABLISHED 状态，TCP 握手结束。
+				
+				
+			TCP 的连接的拆除需要发送四个包，因此称为四次挥手(Four-way handshake)，也叫做改进的三次握手。客户端或服务器均可主动发起挥手动作，在 socket 编程中，任何一方执行 close() 操作即可产生挥手操作。
+				
+				第一次挥手(FIN=1，seq=x)
+				
+				假设客户端想要关闭连接，客户端发送一个 FIN 标志位置为1的包，表示自己已经没有数据可以发送了，但是仍然可以接受数据。
+				
+				发送完毕后，客户端进入 FIN_WAIT_1 状态。
+				
+				第二次挥手(ACK=1，ACKnum=x+1)
+				
+				服务器端确认客户端的 FIN 包，发送一个确认包，表明自己接受到了客户端关闭连接的请求，但还没有准备好关闭连接。
+				
+				发送完毕后，服务器端进入 CLOSE_WAIT 状态，客户端接收到这个确认包之后，进入 FIN_WAIT_2 状态，等待服务器端关闭连接。
+				
+				第三次挥手(FIN=1，seq=y)
+				
+				服务器端准备好关闭连接时，向客户端发送结束连接请求，FIN 置为1。
+				
+				发送完毕后，服务器端进入 LAST_ACK 状态，等待来自客户端的最后一个ACK。
+				
+				第四次挥手(ACK=1，ACKnum=y+1)
+				
+				客户端接收到来自服务器端的关闭请求，发送一个确认包，并进入 TIME_WAIT状态，等待可能出现的要求重传的 ACK 包。
+				
+				服务器端接收到这个确认包之后，关闭连接，进入 CLOSED 状态。
+				
+				客户端等待了某个固定时间（两个最大段生命周期，2MSL，2 Maximum Segment Lifetime）之后，没有收到服务器端的 ACK ，认为服务器端已经正常关闭连接，于是自己也关闭连接，进入 CLOSED 状态。
+	               
+	 	
+	 	3.4 UDP
+	 		UDP 是一个简单的传输层协议。和 TCP 相比，UDP 有下面几个显著特性：
+				1. UDP 缺乏可靠性。UDP 本身不提供确认，序列号，超时重传等机制。UDP 数据报可能在网络中被复制，被重新排序。即 UDP 不保证数据报会到达其最终目的地，也不保证各个数据报的先后顺序，也不保证每个数据报只到达一次
+				2. UDP 数据报是有长度的。每个 UDP 数据报都有长度，如果一个数据报正确地到达目的地，那么该数据报的长度将随数据一起传递给接收方。而 TCP 是一个字节流协议，没有任何（协议上的）记录边界。
+				3. UDP 是无连接的。UDP 客户和服务器之前不必存在长期的关系。UDP 发送数据报之前也不需要经过握手创建连接的过程。
+				4. UDP 支持多播和广播。
+				
+	 	3.5 What happens after you press google it
+	 		For SDE
+	 			
+	 			
+	 			
+	 	3.6 HTTP  Hypertext Transfer Protocol:
+	 			HTTP is responsible for the communication between the web server and the web browser.
+				HTTP is used to send requests from the web client (browser) to the web server and return content (web pages) from the web server to the web client.
+	 		
+	 		
+	 	3.7 HTTPS Secure HTTP:
+	 			HTTPS is responsible for secure communication between the web server and the web browser.
+				As a representative application, HTTPS is used to handle credit card transactions and other sensitive data.
+	
 					
