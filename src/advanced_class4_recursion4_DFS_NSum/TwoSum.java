@@ -52,6 +52,8 @@ import java.util.Map;
  */
 public class TwoSum {
 	//if use a HashMap the array has not to be sorted
+	// time = O(n)
+	// space = O(n0
 	public boolean existSum(int[] array, int target) {
 		if(array.length <= 1) {
 			return false;
@@ -77,6 +79,8 @@ public class TwoSum {
 		if(array.length <= 1) {
 			return false;
 		}
+		// O(nlogn) time complexity
+		// O(1) space
 		Arrays.sort(array);
 		int left = 0;
 		int right = array.length - 1;
