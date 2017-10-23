@@ -51,7 +51,7 @@ public class MedianOfTwoSortedArrays {
 			return a[aLeft + k - 1];
 		}
 		// base case 3: k cannot be further divided to k/2
-		if (k == 1) {
+		if (k == 1) { // it meas we are finding 1th smallest number, so we need to choose smaller one
 			return Math.min(a[aLeft], b[bLeft]);
 		}
 		
