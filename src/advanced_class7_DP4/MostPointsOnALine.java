@@ -76,6 +76,49 @@ public class MostPointsOnALine {
 	  	} // end of outer for loop
 	  	return res;
 	  }
+	  /*
+	   * a solution using BigDecimal to pass all the test cases on Leetcode
+	   */
+//	  public int maxPoints(Point[] points) {
+//	        if (points == null || points.length == 0) {
+//	            return 0;
+//	        }
+//	        int res = 0;
+//	        for (int i = 0; i < points.length; i++) {
+//	            // choose current point as seed and try to find all
+//	            // possible points with same k
+//	            Point seed = points[i];
+//	            int same = 1; // record number of points with same x and y
+//	            int sameX = 0; // record number of points which has same x (meaning the k does not exist)
+//	            int most = 0;
+//	            // key: k, value: number of points with same k
+//	            Map<BigDecimal, Integer> map = new HashMap<>();
+//	            for (int j = 0; j < points.length; j++) {
+//	                if (i == j) {
+//	                    continue;
+//	                }
+//	                if (seed.x == points[j].x && seed.y == points[j].y) {
+//	                    same++;
+//	                } else if (seed.x == points[j].x) {
+//	                    sameX++;
+//	                } else {
+//	                    BigDecimal deltaY = new BigDecimal(points[j].y - seed.y);
+//	                    BigDecimal deltaX = new BigDecimal(points[j].x - seed.x);
+//	                    BigDecimal k = deltaY.divide(deltaX, 20, BigDecimal.ROUND_HALF_UP); 
+//	                    if (!map.containsKey(k)) {
+//	                        map.put(k, 1);
+//	                    } else {
+//	                        map.put(k, map.get(k) + 1);
+//	                    }
+//	                    most = Math.max(most, map.get(k));
+//	                } // end of else
+//	            } // end of inner for loop
+//	            most = Math.max(most, sameX) + same;
+//	            res = Math.max(res, most);
+//	        }
+//	        return res;
+//	    }
+
 	
 	/*
 	 * my own solution using two hashmap, one is to store line of points which has slope
