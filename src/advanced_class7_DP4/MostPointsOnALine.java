@@ -47,7 +47,9 @@ public class MostPointsOnALine {
 	  		// possible points with same k
 	  		Point seed = points[i];
 	  		int most = 0;
-	  		int same = 0; // record number of points with same x and y
+	  		int same = 1; // record number of points having same x and y as seed point, initialize it as 1 can 
+	  					  // cover the case which all the points having same x and y as seed point
+	  					  // and same = 1 initially represents the seed point itself
 	  		int sameX = 0; // record number of points which has same x (meaning the k does not exist)
 	  		// key: k, value: number of points with same k
 	  		Map<Double, Integer> map = new HashMap<>();
@@ -62,7 +64,7 @@ public class MostPointsOnALine {
 	  			} else { // two points which do not have same x or same y
 	  				double k = (points[j].y - seed.y) * 1.0 / (points[j].x - seed.x); 
 	  				if (!map.containsKey(k)) {
-	  					map.put(k, 2); // initially a line contains two points
+	  					map.put(k, 1); // initialize k -> 1 point because we have 'same' initially as 1 and 'same' will be added afterwards
 	  				} else {
 	  					map.put(k, map.get(k) + 1); 
 	  				}
@@ -123,7 +125,7 @@ public class MostPointsOnALine {
 //			for (int j = 0; j < points.length; j++) {
 //				if (i == j) {
 //					continue;
-//				}
+//				
 //				if (points[i].x != points[j].x) {
 //					double k = (points[j].y - points[i].y) / (points[j].x - points[i].x);
 //					double b = points[j].y - ((points[j].y - points[i].y) / (points[j].x - points[i].x)) * points[j].x;
