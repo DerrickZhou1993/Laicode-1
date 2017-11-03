@@ -23,33 +23,34 @@ public class QuickSort {
 	 * a better solution for using random index for pivot which will avoid sorted array condition
 	 */
 	public int[] quickSort(int[] array) {
-		// Write your solution here
-		if (array == null || array.length == 0) {
-			return array;
-		}
+		if (array == null || array.length == 0)
+			return array; // corner case;
 		quickSort(array, 0, array.length - 1);
 		return array;
 	}
 
-	public void quickSort(int[] array, int lo, int hi) {
-		if (lo >= hi) {
+	private void quickSort(int[] array, int lo, int hi) {
+		if (lo >= hi)
 			return;
-		}
 		int pivot = getPivot(array, lo, hi);
-
-		quickSort(array, lo, pivot - 1);
+		quickSort(array, lo, pivot - 1);// divide and conquer
 		quickSort(array, pivot + 1, hi);
 	}
 
-	public int getPivot(int[] array, int lo, int hi) {
-		int pivotIndex = pivotIndex(lo, hi);// get randomized pivot index
+	private int getPivotIndex(int lo, int hi) {
+		double rand = Math.random();
+		return lo + (int) rand * (hi - lo + 1);
+	}
+
+	private int getPivot(int[] array, int lo, int hi) {
+		int pivotIndex = getPivotIndex(lo, hi);
 		int pivot = array[pivotIndex];
-		swap(array, pivotIndex, hi);
-		int left = lo;
-		int right = hi - 1;// because array[hi] = pivot;
-		while (right >= left) {
+		swap(array, pivotIndex, hi);// move pivot to the last position of array
+		int left = lo; // two pointers for partition
+		int right = hi - 1;
+		while (left <= right) { // when pointers cross, stop loop
 			if (array[left] <= pivot) {
-				left++;
+				left++;// move left pointer forward
 			} else if (array[right] >= pivot) {
 				right--;
 			} else {
@@ -60,12 +61,6 @@ public class QuickSort {
 		}
 		swap(array, left, hi);
 		return left;
-	}
-
-	public int pivotIndex(int lo, int hi) {
-		double rand = Math.random();
-		int pivotIndex = lo + (int) (rand * (hi - lo + 1));
-		return pivotIndex;
 	}
 
 	private void swap(int[] array, int a, int b) {
