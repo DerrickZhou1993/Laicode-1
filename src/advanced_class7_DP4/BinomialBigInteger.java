@@ -26,12 +26,19 @@ public class BinomialBigInteger {
 	static BigDecimal getPGuessBCoinA(int flip) {
 		BigDecimal P_gB_cA = null;
 		BigDecimal res = BigDecimal.ZERO;
+		BigDecimal max = BigDecimal.ZERO;
+		int headsnMax = 0;
 		int threshold = getThreshold_GuessB(flip);
 		for (int i = threshold; i <= flip; i++) {
 			BigInteger temp = binomial(flip, i);
 			P_gB_cA = new BigDecimal(temp);
-			P_gB_cA = P_gB_cA.multiply(new BigDecimal(Math.pow(0.4, i)));
-			P_gB_cA = P_gB_cA.multiply(new BigDecimal(Math.pow(0.6, flip - i)));
+			P_gB_cA = P_gB_cA.multiply(new BigDecimal(Math.pow(0.4, i))); // head
+			P_gB_cA = P_gB_cA.multiply(new BigDecimal(Math.pow(0.6, flip - i))); // tail
+			if (P_gB_cA.compareTo(max) > 0) {
+				headsnMax = i;
+				max = P_gB_cA;
+			}
+			// System.out.println("headsn: " + i + " P_gB_cA: " + P_gB_cA +" max: "+ max +" max_headsn "+ headsnMax);
 			res = res.add(P_gB_cA);
 		}
 		return res;
@@ -40,12 +47,19 @@ public class BinomialBigInteger {
 	static BigDecimal getPGuessACoinB(int flip) {
 		BigDecimal P_gA_cB = null;
 		BigDecimal res = BigDecimal.ZERO;
+		BigDecimal max = BigDecimal.ZERO;
+		int headsnMax = 0;
 		int threshold = getThreshold_GuessB(flip);
 		for (int i = 0; i <= threshold - 1; i++) {
 			BigInteger temp = binomial(flip, i);
 			P_gA_cB = new BigDecimal(temp);
-			P_gA_cB = P_gA_cB.multiply(new BigDecimal(Math.pow(0.7, i)));
-			P_gA_cB = P_gA_cB.multiply(new BigDecimal(Math.pow(0.3, flip - i)));
+			P_gA_cB = P_gA_cB.multiply(new BigDecimal(Math.pow(0.7, i))); // head
+			P_gA_cB = P_gA_cB.multiply(new BigDecimal(Math.pow(0.3, flip - i))); // tail
+			if (P_gA_cB.compareTo(max) > 0) {
+				headsnMax = i;
+				max = P_gA_cB;
+			}
+			// System.out.println("headsn: " + i + " P_gA_cB: " + P_gA_cB + " max: " + max + " max_headsn "+ headsnMax);
 			res = res.add(P_gA_cB);
 		}
 		return res;
@@ -53,9 +67,11 @@ public class BinomialBigInteger {
 	public static void main(String[] args) {
 		int flip = 1000;
 		int res = 0;
-		System.out.println(getThreshold_GuessB(10));
-		System.out.println(getPGuessBCoinA(10));
-		System.out.println(getPGuessACoinB(10));
+//		getPGuessACoinB(17); test for Q8
+//		getPGuessBCoinA(17); 
+		 System.out.println(getThreshold_GuessB(17));  // test for Q6
+		 System.out.println(getPGuessBCoinA(17));
+		 System.out.println(getPGuessACoinB(17));
 		for (int i = 0; i < flip; i++) { // find smallest flip which satisfies  P (Guessn != Coin) ≤ 0.1
 			BigDecimal P_gB_cA = getPGuessBCoinA(i);
 			BigDecimal P_gA_cB = getPGuessACoinB(i);
