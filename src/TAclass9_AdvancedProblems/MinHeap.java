@@ -154,7 +154,7 @@ public class MinHeap {
 				swapCandidate = rightChildIdx;
 			}
 			// swap if necessary
-			if (array[i] < array[swapCandidate]) {
+			if (array[i] > array[swapCandidate]) {
 				swap(array, i, swapCandidate);
 			} else {
 				break; // do not need further percolate down
