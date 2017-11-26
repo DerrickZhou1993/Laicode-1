@@ -45,7 +45,7 @@ public class MinHeap {
 	 * each parent node from last level to root level
 	 */
 	public void heapify(int[] array) {
-		for (int i = array.length / 2 - 1; i >= 0 ;i--) {
+		for (int i = array.length / 2 - 1; i >= 0;i--) {
 			percolateDown(i);
 		}
 	}
