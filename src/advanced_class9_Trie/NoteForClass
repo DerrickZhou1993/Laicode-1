@@ -1,14 +1,34 @@
 Trie   ->    Retrieve
-	A data structure
+	A data structure -- it is a tree and a search tree
+		usually ordered data structure
+		search for some kind of "keys" (the keys must be comparable)
+		like tree or linkedlist, the root node can cover all the information of this trie
 	
 	Trie is different from what in the BST
 	
 	- the key must be sequence  (e.g. String, 32 consecutive bits(int))
 	- the actual searching key is associated with the path from root to the node
-		  --> The actual value is on the edge instead of node
+		  --> The actual value is on the edge instead of node (a path)
+		  
+Data Structure learned so far:
+	Array
+	LinkedList
+	Stack
+	Queue
+	Heap
+	Tree
+	Graph
+	Hash
+	Trie
 		  
 
     Question: Suppose you are going to design a dictionary. How will you do it?
+    	Basic idea: 
+    		1. what is the requirement of this dictionary (Externally offered API)
+    			- search(word)
+    			- delete()
+    			- add()
+    			- find all words with given prefix
     	Assumptions:
     		n - # of words
     		m - length of the string/word
@@ -19,12 +39,14 @@ Trie   ->    Retrieve
     				- find all words with given prefix
     				
     			2.options of data structure                                  search()                delete()                add()
-    				- HashSet/HashMap (if not necessary for sorting)          O(m)                     O(m)                  O(m)            
-    				- Balanced BST                                            O(mlogn)                 O(mlogn)              O(mlogn)
-    				- Sorted ArrayList                                        O(mlogn)                 O(mlogn + n)          O(mlogn + n)
+    				- HashSet/HashMap (if not necessary for sorting)          O(m)                     O(m)                  O(m)    
+    									  hashCode() - O(m) for string for we need to compare hashCode for m characters in this string, recall override equals()(O(m)) and hashCode() for string
+    				- Balanced BST                                            O(mlogn)                 O(mlogn)              O(mlogn)   (compare string = O(m) and we have n layers --> mlogn)
+    				- Sorted ArrayList                                        O(mlogn)                 O(mlogn + n)          O(mlogn + n)   (+n means move all the elements backwards at worst case)
     				
-    				- Trie                                                     O(m)                       O(m)                  O(m)
+    				- Trie                                                    O(m)                     O(m)                  O(m)
     				
+    				for Trie: to delete find we need to find the word, so time is still O(m)
     				
     				for HashMap:
     					hashCode() - O(m)  for each character (m) in String invoke hash()
@@ -38,7 +60,7 @@ Trie   ->    Retrieve
     					                  
   	Tire's drawback
   		Time: 1. if stored on disk, more random disk accesses (very expensive)
-  		Space: 1. each TrieNode has extra space consumption -> extra space usage
+  		Space: 1. each TrieNode has extra space consumption -> extra space usage (treenode)
   		       2. memory allocation fragmentation
   		       			especially when the Trie is sparse
     				
@@ -49,19 +71,39 @@ Trie   ->    Retrieve
     	- grouping common prefix, both for time/space complexity
     	- problems related with prefix/matching
     	
+    	for tire: to store aaac aaav aaab, the prefix "aaa" will only be stored once in trie
+    	
     	
     	
     	
     Implementation of Trie
     
-    // Assumption: 26 lower case english letters
+    // Assumption: 26 lower case English letters
     class TireNode {
     	boolean isWord;
-    	TrieNode[] children; // size 26 array, index of ('c' - 'a')
+    	TrieNode[] children; // size 26 array, index of ('c' - 'a')   but the array will waste much space if many characters are not used
     }
     
     //in general
     class TireNode {
     	boolean isWord;
-    	Map<Character, TrieNode> children; // sava space
+    	Map<Character, TrieNode> children; // save space
     }
+    
+    // basic operation
+    // search
+    // add
+    // delete
+    
+    // search "cat" in the trie
+    // finding the path from root which is equal to "cat"
+    // for each of the character in "cat", see if there is an edge associated with it for the next level
+    
+    
+    
+DFS + Trie
+prefix Related Operations
+	1. Find all the words with given prefix
+	    findAllWithPrefix("ca") = ["cap", "cat", "cathy"]
+	    
+     
