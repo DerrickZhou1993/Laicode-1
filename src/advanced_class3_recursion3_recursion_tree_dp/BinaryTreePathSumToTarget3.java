@@ -88,7 +88,10 @@ import java.util.Set;
 		   	for each node:
 		   	problem is to check if X + target == path_prefix to current node
 		   	i.e check if X == path_prefix to current node - target
-  	
+  			X is like a partial_path_sum we have already add into set
+  			if current prefix_sum - target is what we have added, it means
+  			target is another partial_path in the tree, so target exists
+  			
 		   	so we decide to use a hashset to record partial_sum and let current node value - target
 		   		eg: when current node = 6
 		   		HashSet = {-5, 6, 12}
